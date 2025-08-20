@@ -1,0 +1,175 @@
+/* Profile Image Styles - image-styles.css */
+
+.profile-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.profile-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ffffff;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 
+                0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.profile-image:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 
+                0 10px 25px rgba(0, 0, 0, 0.12);
+    border-color: #d511be;
+}
+
+/* Animated border effect */
+.profile-image-container::before {
+    content: '';
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    border-radius: 30%;
+    background: linear-gradient(45deg, #d511be, #2563eb, #d511be);
+    animation: rotate 3s linear infinite;
+    z-index: 1;
+}
+
+.profile-image-container::after {
+    content: '';
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    z-index: 1;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Alternative oval style */
+.profile-image.oval {
+    border-radius: 50% / 60% 60% 40% 40%;
+    width: 220px;
+    height: 280px;
+}
+
+.profile-image-container.oval::before {
+    border-radius: 50% / 60% 60% 40% 40%;
+    width: 240px;
+    height: 300px;
+}
+
+.profile-image-container.oval::after {
+    border-radius: 50% / 60% 60% 40% 40%;
+    width: 230px;
+    height: 290px;
+}
+
+/* Professional square with rounded corners */
+.profile-image.rounded-square {
+    border-radius: 25px;
+    width: 240px;
+    height: 240px;
+}
+
+.profile-image-container.rounded-square::before {
+    border-radius: 30px;
+    width: 260px;
+    height: 260px;
+}
+
+.profile-image-container.rounded-square::after {
+    border-radius: 25px;
+    width: 250px;
+    height: 250px;
+}
+
+/* Floating animation */
+.profile-image.floating {
+    animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Glowing effect */
+.profile-image.glowing {
+    box-shadow: 0 0 30px rgba(213, 17, 190, 0.3),
+                0 0 60px rgba(213, 17, 190, 0.2),
+                0 0 90px rgba(213, 17, 190, 0.1);
+}
+
+.profile-image.glowing:hover {
+    box-shadow: 0 0 40px rgba(213, 17, 190, 0.5),
+                0 0 80px rgba(213, 17, 190, 0.3),
+                0 0 120px rgba(213, 17, 190, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .profile-image-container::before {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .profile-image-container::after {
+        width: 210px;
+        height: 210px;
+    }
+    
+    .profile-image.oval {
+        width: 180px;
+        height: 220px;
+    }
+    
+    .profile-image-container.oval::before {
+        width: 200px;
+        height: 240px;
+    }
+    
+    .profile-image-container.oval::after {
+        width: 190px;
+        height: 230px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .profile-image-container::before {
+        width: 170px;
+        height: 170px;
+    }
+    
+    .profile-image-container::after {
+        width: 160px;
+        height: 160px;
+    }
+}

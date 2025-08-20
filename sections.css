@@ -1,0 +1,260 @@
+/* ===============================
+   Global Container Setup
+================================ */
+
+.main-section {
+  padding: 4rem 2rem;
+  background-color: #0f172a;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #10b981;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: #c8cbd0;
+  margin-bottom: 2rem;
+}
+
+/* ===============================
+   Hero Section Styles
+================================ */
+
+.hero {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(44, 83, 100, 0.3));
+  color: #e5e7eb;
+  border-radius: 20px;
+  margin: 2rem 0;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.hero .tagline {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  color: #d1d5db;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+
+/* ===============================
+   GitHub Section
+================================ */
+
+.github-section {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(15, 32, 39, 0.9);
+  border-radius: 15px;
+  color: #d1d5db;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.github-section a {
+  color: #10b981;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.github-section a:hover {
+  color: #0f766e;
+}
+
+/* ===============================
+   Skills Section Styles
+================================ */
+
+.skill-category {
+  background: rgba(248, 250, 252, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.skill-category h3 {
+  color: #10b981;
+  margin-bottom: 1rem;
+}
+
+.skill-tag {
+  background: #2563eb;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin: 0.25rem;
+}
+
+/* ===============================
+   Social Proof Styles
+================================ */
+
+.social-proof {
+  text-align: center;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  margin: 4rem 0;
+}
+
+.social-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* ===============================
+   Contact Section Styles
+================================ */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-info {
+  background: #0a1722;
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #e5e7eb;
+}
+
+.contact-form button {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #0f766e;
+}
+
+/* ===============================
+   Areas of Interest Section
+   Controls: Skills/interests tags display
+================================ */
+
+.interests-section {
+  background: rgba(16, 185, 129, 0.05);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  margin: 4rem 0;
+  border: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+.interests-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.interests-content h2 {
+  font-size: 2.5rem;
+  color: #10b981;
+  margin-bottom: 2rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+/* ===============================
+   About Section Styles
+   Controls: About section layout and text
+================================ */
+
+.about-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  color: #10b981;
+  margin-bottom: 2rem;
+}
+
+.about-text p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #d1d5db;
+  line-height: 1.8;
+}
+
+.achievements {
+  background: rgba(16, 185, 129, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  border-left: 5px solid #10b981;
+  margin-top: 2rem;
+}
+
+.achievements h3 {
+  color: #10b981;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+

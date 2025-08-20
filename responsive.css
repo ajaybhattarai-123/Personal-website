@@ -1,0 +1,119 @@
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero .tagline {
+        font-size: 1.2rem;
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .social-stats {
+        gap: 2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .profile-photo {
+        width: 150px !important;
+        height: 150px !important;
+        min-width: 100px;
+        min-height: 100px;
+    }
+
+    .photo-controls {
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+
+    .section {
+        margin: 2rem 0;
+        padding: 2rem 1rem;
+    }
+
+    /* Responsive adjustments for video cards */
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .video-card {
+        height: 350px;
+        min-height: 350px;
+    }
+
+    .video-thumbnail {
+        height: 150px;
+    }
+
+    .video-card h3 {
+        height: 50px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 4rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-photo {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Mobile adjustments for video cards */
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .video-card {
+        height: 320px;
+        min-height: 320px;
+        padding: 1rem;
+    }
+
+    .video-thumbnail {
+        height: 120px;
+    }
+
+    .video-card h3 {
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .video-card p {
+        font-size: 0.9rem;
+    }
+}

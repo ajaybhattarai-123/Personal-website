@@ -1,0 +1,391 @@
+/* ===============================
+   TECHNICAL SKILLS - GRID LAYOUT (Original Good Version)
+   Controls: Grid arrangement for skill categories (boxes)
+================================ */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: stretch;
+}
+
+/* Responsive adjustments for skills grid */
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===============================
+   SKILLS - Card Styling (Grid Boxes)
+   Controls: Basic card appearance and hover effects for skills
+================================ */
+
+.skill-category {
+  background: rgba(16, 185, 129, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid rgba(16, 185, 129, 0.1);
+  text-align: center;
+}
+
+.skill-category:hover {
+  transform: translateY(-5px);
+  border-color: #2f10b9;
+  box-shadow: 0 15px 35px rgba(26, 88, 231, 0.2);
+  background: rgba(16, 38, 185, 0.1);
+}
+
+.skill-category h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.skill-category h3 i {
+  font-size: 1.5rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.skill-tag {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: #10b981;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   TEACHING & WORKING - HORIZONTAL LAYOUT (List Style)
+   Controls: Horizontal arrangement for teaching items
+================================ */
+
+.teaching-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+/* ===============================
+   TEACHING - Individual Item Styling (Horizontal)
+   Controls: Single row item appearance with horizontal line separator
+================================ */
+
+.teaching-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgba(16, 185, 129, 0.05);
+  border: none;
+  border-bottom: 2px solid rgba(16, 185, 129, 0.2);
+  padding: 1.5rem 2rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  min-height: 80px;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
+.teaching-item:hover {
+  background: rgba(16, 185, 129, 0.1);
+  border-bottom-color: #10b981;
+  transform: translateX(10px);
+  padding-left: 2.5rem;
+}
+
+/* Last item removes bottom border */
+.teaching-item:last-child {
+  border-bottom: none;
+}
+
+/* ===============================
+   TEACHING - Thumbnail Section (Left Side)
+   Controls: Media containers on the left side of each teaching item
+================================ */
+
+.teaching-thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #3aa2d2, #0f766d);
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.teaching-thumbnail i {
+  font-size: 2rem;
+  color: white;
+}
+
+/* ===============================
+   TEACHING - Content Section (Middle)
+   Controls: Text content in the middle of each teaching item
+================================ */
+
+.teaching-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.teaching-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #10b981;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.teaching-content p {
+  font-size: 1rem;
+  color: #c8cbd0;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ===============================
+   TEACHING - Button Section (Right Side)
+   Controls: Action buttons on the right side of teaching items
+================================ */
+
+.teaching-item .btn-small {
+  font-size: 0.9rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 2rem;
+  flex-shrink: 0;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.teaching-item .btn-small:hover {
+  background-color: #0f766e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* ===============================
+   RESPONSIVE DESIGN - Mobile Adjustments
+   Controls: Mobile-friendly layouts for both sections
+================================ */
+
+@media (max-width: 768px) {
+  /* Teaching items become vertical on mobile */
+  .teaching-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    min-height: auto;
+  }
+  
+  .teaching-thumbnail {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .teaching-content {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .teaching-item .btn-small {
+    margin-left: 0;
+    align-self: center;
+  }
+  
+  /* Skills grid becomes single column */
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .teaching-item {
+    padding: 1rem;
+  }
+  
+  .teaching-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .teaching-content p {
+    font-size: 0.9rem;
+  }
+  
+  .skill-category {
+    padding: 1.5rem;
+  }
+  
+  .skill-category h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* ===============================
+   GITHUB SECTION STYLING
+   Controls: Styling for the GitHub section
+================================ */
+
+.github-section {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(16, 185, 129, 0.05);
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid rgba(16, 185, 129, 0.1);
+}
+
+.github-section h3 {
+  color: #10b981;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.github-section p {
+  color: #c8cbd0;
+  margin-bottom: 1.5rem;
+}
+
+.github-section a {
+  color: #10b981;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.github-section a:hover {
+  color: #0f766e;
+}
+
+.github-section i {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* ===============================
+   LEGACY SUPPORT - Keep other sections working
+   Controls: Ensure other parts of the site still work
+================================ */
+
+/* Keep video-grid for any other video sections */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: stretch;
+}
+
+@media (max-width: 1024px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.video-card {
+  background: rgba(16, 185, 129, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid rgba(16, 185, 129, 0.1);
+}
+
+.video-card:hover {
+  transform: translateY(-5px);
+  border-color: #2f10b9;
+  box-shadow: 0 15px 35px rgba(26, 88, 231, 0.2);
+  background: rgba(16, 38, 185, 0.1);
+}
+
+.video-thumbnail {
+  height: 200px;
+  width: 100%;
+  background: linear-gradient(45deg, #3aa2d2, #0f766d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.video-card-content {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.video-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #10b981;
+  margin-bottom: 1rem;
+}
+
+.video-card p {
+  font-size: 0.95rem;
+  color: #c8cbd0;
+  line-height: 1.5;
+  flex-grow: 1;
+}
