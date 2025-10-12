@@ -1,416 +1,1481 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Er. Ajay Bhattarai - Civil Engineer | Educator | Researcher</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="base.css">
-    <link rel="stylesheet" href="layout.css">
-    <link rel="stylesheet" href="components.css">
-    <link rel="stylesheet" href="sections.css">
-    <link rel="stylesheet" href="responsive.css">
-    <link rel="stylesheet" href="grid.css">
-    <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="profile.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --primary-color: #1a4d7a;
+            --secondary-color: #2c6ba8;
+            --accent-color: #f39c12;
+            --pink-accent: #d511be;
+            --text-dark: #2c3e50;
+            --text-light: #ecf0f1;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section with Profile Image */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            padding: 150px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image-container {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--accent-color);
+            box-shadow: var(--shadow-lg);
+            object-fit: cover;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-light);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .achievements {
+            margin-top: 2rem;
+        }
+
+        .achievements h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow);
+        }
+
+        .achievement-item i {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            min-width: 30px;
+        }
+
+        /* Areas of Interest */
+        .interests-section {
+            background: var(--bg-light);
+        }
+
+        .interests-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Teaching & Working Section */
+        .teaching-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .teaching-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .teaching-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .teaching-thumbnail {
+            width: 80px;
+            height: 80px;
+            background: var(--secondary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .teaching-content {
+            flex: 1;
+        }
+
+        .teaching-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .teaching-content h3 a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .teaching-content h3 a:hover {
+            color: var(--accent-color);
+        }
+
+        .teaching-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .btn-small {
+            padding: 0.5rem 1.5rem;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-small:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+
+        .github-section {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem;
+            background: var(--text-dark);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .github-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .github-section p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .github-section a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            background: var(--secondary-color);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .github-section a:hover {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category h3 i {
+            color: var(--accent-color);
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            background: var(--bg-light);
+            text-align: center;
+        }
+
+        .social-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Goals Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .about-grid h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-grid p {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-light);
+        }
+
+        .contact-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-subtitle {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: var(--bg-white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-card-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-value {
+            color: #666;
+        }
+
+        .contact-value a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-cta {
+            background: var(--bg-white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-cta h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-cta p {
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .cta-buttons-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn-contact {
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-contact-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-contact-primary:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-contact-secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-contact-secondary:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--text-light);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--bg-white);
+                width: 100%;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .about-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .teaching-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="logo">Er. Ajay Bhattarai</div>
-            <ul class="nav-links">
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Er. Ajay Bhattarai</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#teaching">Teaching & Working</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#goals">Goals</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </nav>
-    </header>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
             <div class="profile-image-container">
+                <!-- REPLACE 'HERO.png' WITH YOUR IMAGE FILE NAME -->
                 <img src="HERO.png" alt="Er. Ajay Bhattarai" class="profile-image">
             </div>
-            <!-- Hero Section -->
-            <section class="hero">
-                <h1>Ajay Bhattarai</h1>
-                <p class="tagline">Civil Engineer | Educator | Researcher</p>
-                <div class="cta-buttons">
-                    <a href="https://www.youtube.com/@ajaybhattarai360" class="btn btn-primary" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                        Er. Ajay's Engineering Insights
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <i class="fas fa-envelope"></i>
-                        Get In Touch
-                    </a>
-                </div>
-            </section>
+            <h1>Ajay Bhattarai</h1>
+            <p class="tagline">Civil Engineer | Educator | Researcher</p>
+            <div class="cta-buttons">
+                <a href="https://www.youtube.com/@ajaybhattarai360" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                    Er. Ajay's Engineering Insights
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i>
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
 
-            <!-- About Section -->
-            <section id="about" class="section fade-in">
-                <div class="about-content">
-                    <h2>About Me</h2>
-                    <p>
-                        I am a passionate Civil Engineer and educator with experience in engineering software and
-                        teaching. I am interested in civil engineering research, solving real-world problems, and
-                        continuously learning. I also want to explore the use of ML and AI in engineering.
-                    </p>
-                    <p>
-                        I am committed to expanding my knowledge and becoming an expert across diverse civil engineering
-                        fields.
-                    </p>
-
-                    <div class="achievements">
-                        <h3>Key Achievements</h3>
-                        <div class="achievement-item">
-                            <i class="fas fa-users"></i>
-                            <span>Trained 380+ students in AutoCAD, Revit & SW-DTM</span>
-                        </div>
-                        <div class="achievement-item">
-                            <i class="fas fa-trophy"></i>
-                            <span>IOE Rank 173 (Top 1% of students)</span>
-                        </div>
-                        <div class="achievement-item">
-                            <i class="fas fa-award"></i>
-                            <span>Winner: First Inter College AutoCAD Competition</span>
-                        </div>
-                        <div class="achievement-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Batch Topper: SEE & Higher Secondary</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Areas of Interest Section -->
-            <section class="interests-section fade-in">
-                <div class="interests-content">
-                    <h2>Areas of Interest</h2>
-                    <p style="color: #d1d5db; margin-bottom: 2rem; font-size: 1.1rem;">
-                        Exploring cutting-edge technologies and research areas that drive innovation in civil
-                        engineering
-                    </p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Research & Innovation</span>
-                        <span class="skill-tag">Design & Modeling</span>
-                        <span class="skill-tag">Python Programming</span>
-                        <span class="skill-tag">Technology & Software Applications</span>
-                        <span class="skill-tag">Revit & AutoCAD</span>
-                        <span class="skill-tag">Music & Singing</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Teaching & Working Portfolio Section - HORIZONTAL LAYOUT -->
-            <section id="teaching" class="section fade-in">
-                <h2>Teaching & Working</h2>
-                <p style="text-align: center; color: #d511be; margin-bottom: 2rem;">
-                    <b> Currently teaching at GyanHub Academy.</b>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content fade-in">
+                <p>
+                    I am a passionate Civil Engineer and educator with experience in engineering software and
+                    teaching. I am interested in civil engineering research, solving real-world problems, and
+                    continuously learning. I also want to explore the use of ML and AI in engineering.
+                </p>
+                <p>
+                    I am committed to expanding my knowledge and becoming an expert across diverse civil engineering
+                    fields.
                 </p>
 
-                <!-- Changed to teaching-list for horizontal layout -->
-                <div class="teaching-list">
-                    <div class="teaching-item">
-                        <div class="teaching-thumbnail">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="teaching-content">
-                            <h3><a href="https://youtu.be/__g8gMUIZyg?si=EgVmoFAtLjWL98G3" target="_blank"
-                                    style="color: inherit; text-decoration: none;">AutoCAD Training</a></h3>
-                            <p>Trained over 200+ students from basic to intermediate AutoCAD in Institute of Engineering
-                                (IOE), Pulchowk College</p>
-                        </div>
-                        <a href="https://youtu.be/__g8gMUIZyg?si=EgVmoFAtLjWL98G3" target="_blank"
-                            class="btn-small">View</a>
+                <div class="achievements">
+                    <h3>Key Achievements</h3>
+                    <div class="achievement-item">
+                        <i class="fas fa-users"></i>
+                        <span>Trained 400+ students in AutoCAD, Revit & SW-DTM</span>
                     </div>
-
-                    <div class="teaching-item">
-                        <div class="teaching-thumbnail">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="teaching-content">
-                            <h3><a href="https://youtu.be/w3-26xpmvY0?si=SZWCk1QcHvjJNoRK" target="_blank"
-                                    style="color: inherit; text-decoration: none;">Revit Architecture Training</a></h3>
-                            <p>Trained over 60+ students in Revit Architecture in Institute of Engineering (IOE),
-                                Pulchowk College</p>
-                        </div>
-                        <a href="https://youtu.be/w3-26xpmvY0?si=SZWCk1QcHvjJNoRK" target="_blank"
-                            class="btn-small">View</a>
+                    <div class="achievement-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>IOE Rank 173 (Top 1% of students)</span>
                     </div>
-
-                    <div class="teaching-item">
-                        <div class="teaching-thumbnail">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="teaching-content">
-                            <h3><a href="#" target="_blank" style="color: inherit; text-decoration: none;">Universal
-                                    Engineering & Science College</a></h3>
-                            <p>Trained over 100+ students in AutoCAD and SW-DTM from basic to advance</p>
-                        </div>
-                        <a href="#" class="btn-small">View</a>
+                    <div class="achievement-item">
+                        <i class="fas fa-award"></i>
+                        <span>Winner: First Inter College AutoCAD Competition</span>
                     </div>
-
-                    <div class="teaching-item">
-                        <div class="teaching-thumbnail">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="teaching-content">
-                            <h3><a href="#" target="_blank" style="color: inherit; text-decoration: none;">Sikaune
-                                    EduTech</a></h3>
-                            <p>Trained over 20+ students in AutoCAD from beginner to intermediate</p>
-                        </div>
-                        <a href="#" class="btn-small">View</a>
-                    </div>
-
-                    <div class="teaching-item">
-                        <div class="teaching-thumbnail">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="teaching-content">
-                            <h3><a href="https://youtu.be/QB_s55JPKig?si=Jnom6y-tQEQu4FOW" target="_blank"
-                                    style="color: inherit; text-decoration: none;">GyanHub Academy Sessions</a></h3>
-                            <p>Professional training on AutoCAD, SW-DTM, and Google Earth Pro applications</p>
-                        </div>
-                        <a href="https://youtu.be/QB_s55JPKig?si=Jnom6y-tQEQu4FOW" target="_blank"
-                            class="btn-small">View</a>
-                    </div>
-
-                    <div class="teaching-item">
-                        <div class="teaching-thumbnail">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="teaching-content">
-                            <h3><a href="https://drive.google.com/drive/folders/1rK06KrXelI8DC9ju_OEdCew1CDt2g7xw?usp=drive_link"
-                                    target="_blank" style="color: inherit; text-decoration: none;">Aakhyan Academy</a>
-                            </h3>
-                            <p>Teach Engineering Mechanics to first-year students</p>
-                        </div>
-                        <a href="https://drive.google.com/drive/folders/1rK06KrXelI8DC9ju_OEdCew1CDt2g7xw?usp=drive_link"
-                            target="_blank" class="btn-small">View</a>
+                    <div class="achievement-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Batch Topper: SEE & Higher Secondary</span>
                     </div>
                 </div>
-
-                <div class="github-section">
-                    <h3>Explore My Projects</h3>
-                    <p>Check out some of my coding works on GitHub</p>
-                    <a href="https://github.com/ajaybhattarai-123" target="_blank">
-                        <i class="fab fa-github"></i> GitHub: ajaybhattarai-123 
-                    </a>
-                </div>
-            </section>
-
-            <!-- Skills Section - KEEP GRID LAYOUT -->
-            <section id="skills" class="section fade-in">
-                <h2>Technical Skills</h2>
-                <!-- Keep original skills-grid for box layout -->
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3><i class="fas fa-drafting-compass"></i> Design Software</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">AutoCAD</span>
-                            <span class="skill-tag">Revit</span>
-                            <span class="skill-tag">Civil 3D</span>
-                            <span class="skill-tag">SW-DTM</span>
-                            <span class="skill-tag">ETABS</span>
-                            <span class="skill-tag">QGIS</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3><i class="fas fa-code"></i> Programming & Documentation</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">LaTeX</span>
-                            <span class="skill-tag">MS Office</span>
-                        </div>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3><i class="fas fa-paint-brush"></i> Design & Media</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">Canva</span>
-                            <span class="skill-tag">Filmora</span>
-                            <span class="skill-tag">CapCut</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Social Proof Section -->
-            <section class="social-proof fade-in">
-                <h2 style="color: white; margin-bottom: 1rem;">Social Impact</h2>
-                <p>Sharing engineering knowledge and inspiring the next generation of engineers</p>
-                <div class="social-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">5500+</div>
-                        <div class="stat-label">TikTok Followers</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">300+</div>
-                        <div class="stat-label">Students Trained</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">5+</div>
-                        <div class="stat-label">Institutions</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Goals Section -->
-            <section id="goals" class="section fade-in">
-                <h2>Education & Future Goals</h2>
-                <div class="about-grid">
-                    <div>
-                        <h3>Current Education</h3>
-                        <p><strong>Bachelor of Civil Engineering</strong><br>
-                            Institute of Engineering (IOE), Pulchowk Campus<br>
-                            Percentage: 77.55/100 | IOE Rank: 173 (Top 1%)</p>
-
-                        <h3 style="margin-top: 2rem;">Future Aspirations</h3>
-                        <p>Planning to pursue <strong>Master's studies in the United States</strong> In Civil Engineering, my goal is to expand my knowledge, do meaningful research, and learn new technologies like Machine Learning and Artificial Intelligence to solve real engineering problems. I also want to help grow the profession and inspire future engineers.</p>
-                    </div>
-                    <div class="achievements">
-                        <h3>Research Interests</h3>
-                        <div class="achievement-item">
-                            <i class="fas fa-microscope"></i>
-                            <span>Data Analysis & Modeling</span>
-                        </div>
-                        <div class="achievement-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Technology Applications in Science & Engineering</span>
-                        </div>
-                        <div class="achievement-item">
-                            <i class="fas fa-leaf"></i>
-                            <span>Artificial Intelligence & Machine Learning Applications</span>
-                        </div>
-                        <div class="achievement-item">
-                            <i class="fas fa-cogs"></i>
-                            <span>Engineering Software Development</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Enhanced Contact Section -->
-            <section id="contact" class="contact-section fade-in">
-                <div class="contact-wrapper">
-                    <div class="contact-header">
-                        <h2>Get In Touch</h2>
-                        <p class="contact-subtitle">Let's connect and explore opportunities to collaborate</p>
-                    </div>
-
-                    <div class="contact-container">
-                        <div class="contact-info-section">
-                            <h3><i class="fas fa-address-book"></i> Contact Information</h3>
-                            <div class="contact-items">
-                                <div class="contact-card">
-                                    <div class="contact-card-content">
-                                        <div class="contact-icon">
-                                            <i class="fas fa-envelope"></i>
-                                        </div>
-                                        <div class="contact-details">
-                                            <div class="contact-label">Email</div>
-                                            <div class="contact-value">
-                                                <a
-                                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaybhattarai986@gmail.com">ajaybhattarai986@gmail.com</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="contact-card">
-                                    <div class="contact-card-content">
-                                        <div class="contact-icon">
-                                            <i class="fab fa-linkedin"></i>
-                                        </div>
-                                        <div class="contact-details">
-                                            <div class="contact-label">LinkedIn</div>
-                                            <div class="contact-value">
-                                                <a href="https://www.linkedin.com/in/ajaybhattarai360">Connect with
-                                                    me</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="contact-card">
-                                    <div class="contact-card-content">
-                                        <div class="contact-icon">
-                                            <i class="fab fa-youtube"></i>
-                                        </div>
-                                        <div class="contact-details">
-                                            <div class="contact-label">YouTube</div>
-                                            <div class="contact-value">
-                                                <a href="https://www.youtube.com/@ajaybhattarai360" target="_blank">Er.
-                                                    Ajay's Engineering Insights</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="contact-card">
-                                    <div class="contact-card-content">
-                                        <div class="contact-icon">
-                                            <i class="fab fa-github"></i>
-                                        </div>
-                                        <div class="contact-details">
-                                            <div class="contact-label">GitHub</div>
-                                            <div class="contact-value">
-                                                <a href="https://github.com/ajaybhattarai-123"
-                                                    target="_blank">ajaybhattarai-123</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="contact-card">
-                                    <div class="contact-card-content">
-                                        <div class="contact-icon">
-                                            <i class="fas fa-map-marker-alt"></i>
-                                        </div>
-                                        <div class="contact-details">
-                                            <div class="contact-label">Location</div>
-                                            <div class="contact-value">Biratnagar, Koshi Province, Nepal</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="contact-cta">
-                            <h3>Ready to Collaborate?</h3>
-                            <p>Whether you're interested in engineering consultations, training programs, or research
-                                collaborations, I'd love to hear from you.</p>
-                            <div class="cta-buttons-contact">
-                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaybhattarai986@gmail.com"
-                                    class="btn-contact btn-contact-primary">
-                                    <i class="fas fa-envelope"></i>
-                                    Send Email
-                                </a>
-                                <a href="https://www.linkedin.com/in/ajaybhattarai360"
-                                    class="btn-contact btn-contact-secondary" target="_blank">
-                                    <i class="fab fa-linkedin"></i>
-                                    Connect on LinkedIn
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </div>
         </div>
-    </main>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Areas of Interest Section -->
+    <section class="interests-section fade-in">
+        <div class="container">
+            <div class="interests-content">
+                <h2>Areas of Interest</h2>
+                <p style="color: #01060e; margin-bottom: 2rem; font-size: 1.1rem;">
+                    A civil engineer with interdisciplinary knowledge spanning water, structural, and transportation systems.
+                </p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Sustainable Infrastructure</span>
+                    <span class="skill-tag">Technology & Software Applications</span>
+                    <span class="skill-tag">Research & Innovation</span>
+                    <span class="skill-tag">Design & Modeling</span>
+                    <span class="skill-tag">ML and AI</span>
+                    <span class="skill-tag">Music & Singing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching & Working Portfolio Section -->
+    <section id="teaching">
+        <div class="container">
+            <h2>Teaching & Working</h2>
+            <p style="text-align: center; color: var(--pink-accent); margin-bottom: 2rem; font-weight: bold;">
+                Currently teaching at GyanHub Academy.
+            </p>
+
+            <div class="teaching-list fade-in">
+                <div class="teaching-item">
+                    <div class="teaching-thumbnail">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="teaching-content">
+                        <h3><a href="https://youtu.be/w3-26xpmvY0?si=SZWCk1QcHvjJNoRK" target="_blank">Revit Architecture Training</a></h3>
+                        <p>Trained over 60+ students in Revit Architecture in Institute of Engineering (IOE), Pulchowk College</p>
+                    </div>
+                    <a href="https://youtu.be/w3-26xpmvY0?si=SZWCk1QcHvjJNoRK" target="_blank" class="btn-small">View</a>
+                </div>
+
+                <div class="teaching-item">
+                    <div class="teaching-thumbnail">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="teaching-content">
+                        <h3><a href="#" target="_blank">Universal Engineering & Science College</a></h3>
+                        <p>Trained over 100+ students in AutoCAD and SW-DTM from basic to advance</p>
+                    </div>
+                    <a href="#" class="btn-small">View</a>
+                </div>
+
+                <div class="teaching-item">
+                    <div class="teaching-thumbnail">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="teaching-content">
+                        <h3><a href="#" target="_blank">Sikaune EduTech</a></h3>
+                        <p>Trained over 20+ students in AutoCAD from beginner to intermediate</p>
+                    </div>
+                    <a href="#" class="btn-small">View</a>
+                </div>
+
+                <div class="teaching-item">
+                    <div class="teaching-thumbnail">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="teaching-content">
+                        <h3><a href="https://youtu.be/QB_s55JPKig?si=Jnom6y-tQEQu4FOW" target="_blank">GyanHub Academy Sessions</a></h3>
+                        <p>Professional training on AutoCAD, SW-DTM, and Google Earth Pro applications</p>
+                    </div>
+                    <a href="https://youtu.be/QB_s55JPKig?si=Jnom6y-tQEQu4FOW" target="_blank" class="btn-small">View</a>
+                </div>
+
+                <div class="teaching-item">
+                    <div class="teaching-thumbnail">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="teaching-content">
+                        <h3><a href="https://drive.google.com/drive/folders/1rK06KrXelI8DC9ju_OEdCew1CDt2g7xw?usp=drive_link" target="_blank">Aakhyan Academy</a></h3>
+                        <p>Teach Engineering Mechanics to first-year students</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1rK06KrXelI8DC9ju_OEdCew1CDt2g7xw?usp=drive_link" target="_blank" class="btn-small">View</a>
+                </div>
+            </div>
+
+            <div class="github-section">
+                <h3>Explore My Projects</h3>
+                <p>Check out some of my coding works on GitHub</p>
+                <a href="https://github.com/ajaybhattarai-123" target="_blank">
+                    <i class="fab fa-github"></i> GitHub: ajaybhattarai-123
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid fade-in">
+                <div class="skill-category">
+                    <h3><i class="fas fa-drafting-compass"></i> Design Software</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AutoCAD</span>
+                        <span class="skill-tag">Revit</span>
+                        <span class="skill-tag">Civil 3D</span>
+                        <span class="skill-tag">SW-DTM</span>
+                        <span class="skill-tag">ETABS</span>
+                        <span class="skill-tag">QGIS</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming & Documentation</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">LaTeX</span>
+                        <span class="skill-tag">MS Office</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-paint-brush"></i> Design & Media</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Filmora</span>
+                        <span class="skill-tag">CapCut</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof fade-in">
+        <div class="container">
+            <h2 style="color: rgb(3, 3, 3); margin-bottom: 1rem;">Social Impact</h2>
+            <p>Sharing engineering knowledge and inspiring the next generation of engineers</p>
+            <div class="social-stats">
+                <div class="stat-item">
+                    <div class="stat-number">5500+</div>
+                    <div class="stat-label">TikTok Followers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">400+</div>
+                    <div class="stat-label">Students Trained</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Institutions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section id="goals">
+        <div class="container">
+            <h2>Education & Future Goals</h2>
+            <div class="about-grid fade-in">
+                <div>
+                    <h3>Current Education</h3>
+                    <p><strong>Bachelor of Civil Engineering</strong><br>
+                        Institute of Engineering (IOE), Pulchowk Campus<br>
+                        Percentage: 77.55/100 | IOE Rank: 173 (Top 1%)</p>
+
+                    <h3 style="margin-top: 2rem;">Future Aspirations</h3>
+                    <p>Planning to pursue <strong>Master's studies in the United States</strong> in Civil Engineering. My goal is to expand my knowledge, do meaningful research, and learn new technologies like Machine Learning and Artificial Intelligence to solve real engineering problems. I also want to help grow the profession and inspire future engineers.</p>
+                </div>
+                <div class="achievements">
+                    <h3>Research Interests</h3>
+                    <div class="achievement-item">
+                        <i class="fas fa-microscope"></i>
+                        <span>Data-Driven Modeling</span>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Machine Learning and Artificial Intelligence</span>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-leaf"></i>
+                        <span>Digital twin technology</span>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="fas fa-cogs"></i>
+                        <span>Resilient Infrastructure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section fade-in">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-header">
+                    <h2>Get In Touch</h2>
+                    <p class="contact-subtitle">Let's connect and explore opportunities to collaborate</p>
+                </div>
+
+                <div class="contact-container">
+                    <div class="contact-info-section">
+                        <h3><i class="fas fa-address-book"></i> Contact Information</h3>
+                        <div class="contact-items">
+                            <div class="contact-card">
+                                <div class="contact-card-content">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <div class="contact-label">Email</div>
+                                        <div class="contact-value">
+                                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaybhattarai986@gmail.com" target="_blank">ajaybhattarai986@gmail.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contact-card">
+                                <div class="contact-card-content">
+                                    <div class="contact-icon">
+                                        <i class="fab fa-linkedin"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <div class="contact-label">LinkedIn</div>
+                                        <div class="contact-value">
+                                            <a href="https://www.linkedin.com/in/ajaybhattarai360" target="_blank">Connect with me</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contact-card">
+                                <div class="contact-card-content">
+                                    <div class="contact-icon">
+                                        <i class="fab fa-youtube"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <div class="contact-label">YouTube</div>
+                                        <div class="contact-value">
+                                            <a href="https://www.youtube.com/@ajaybhattarai360" target="_blank">Er. Ajay's Engineering Insights</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contact-card">
+                                <div class="contact-card-content">
+                                    <div class="contact-icon">
+                                        <i class="fab fa-github"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <div class="contact-label">GitHub</div>
+                                        <div class="contact-value">
+                                            <a href="https://github.com/ajaybhattarai-123" target="_blank">ajaybhattarai-123</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contact-card">
+                                <div class="contact-card-content">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <div class="contact-label">Location</div>
+                                        <div class="contact-value">Biratnagar, Koshi Province, Nepal</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-cta">
+                        <h3>Ready to Collaborate?</h3>
+                        <p>Whether you're interested in engineering consultations, training programs, or research collaborations, I'd love to hear from you.</p>
+                        <div class="cta-buttons-contact">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaybhattarai986@gmail.com" class="btn-contact btn-contact-primary" target="_blank">
+                                <i class="fas fa-envelope"></i>
+                                Send Email
+                            </a>
+                            <a href="https://www.linkedin.com/in/ajaybhattarai360" class="btn-contact btn-contact-secondary" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                                Connect on LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Civil engineer and educator specializing in engineering software training, advancing research initiatives, and delivering technical solutions to engineering challenges.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/ajaybhattarai360" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/@ajaybhattarai360" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://github.com/ajaybhattarai-123" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaybhattarai986@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#teaching">Teaching & Working</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#goals">Goals</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Areas of Expertise</h3>
+                <ul class="footer-links">
+                    <li><a href="#">AutoCAD Training</a></li>
+                    <li><a href="#">Revit Architecture</a></li>
+                    <li><a href="#">SW-DTM</a></li>
+                    <li><a href="#">Python Programming</a></li>
+                    <li><a href="#">Engineering Research</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Get Updates</h3>
+                <p>Follow my YouTube channel for engineering tutorials and insights.</p>
+                <a href="https://www.youtube.com/@ajaybhattarai360" target="_blank" class="btn btn-primary" style="margin-top: 1rem; display: inline-flex;">
+                    <i class="fab fa-youtube"></i> Subscribe
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Er. Ajay Bhattarai. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Update active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        const animateCounter = (element, target) => {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + '+';
+                }
+            }, 30);
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    const target = parseInt(statNumber.textContent);
+                    animateCounter(statNumber, target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-item').forEach(stat => {
+            statsObserver.observe(stat);
+        });
+
+        // Scroll to top functionality
+        let scrollTopBtn = document.createElement('button');
+        scrollTopBtn.innerHTML = '↑';
+        scrollTopBtn.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: var(--shadow-lg);
+        `;
+        document.body.appendChild(scrollTopBtn);
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.style.opacity = '1';
+                scrollTopBtn.style.pointerEvents = 'all';
+            } else {
+                scrollTopBtn.style.opacity = '0';
+                scrollTopBtn.style.pointerEvents = 'none';
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        scrollTopBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.background = '#e67e22';
+        });
+
+        scrollTopBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.background = 'var(--accent-color)';
+        });
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
 </body>
-
-
-</html>
-
