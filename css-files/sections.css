@@ -4,7 +4,8 @@
 
 .main-section {
   padding: 4rem 2rem;
-  background-color: #0f172a;
+  /* Changed: Main background color to Gray */
+  background-color: #f3f4f6;
 }
 
 .section-container {
@@ -17,12 +18,14 @@
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #10b981;
+  /* Changed: Section title text color to Black */
+  color: #000000;
 }
 
 .section-subtitle {
   font-size: 1rem;
-  color: #c8cbd0;
+  /* Changed: Subtitle text color to Black (dark gray for readability) */
+  color: #374151;
   margin-bottom: 2rem;
 }
 
@@ -33,25 +36,31 @@
 .hero {
   text-align: center;
   padding: 6rem 2rem;
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(44, 83, 100, 0.3));
-  color: #e5e7eb;
+  /* Changed: Hero background to White */
+  background: white;
+  /* Changed: Color to Black */
+  color: #000000;
   border-radius: 20px;
   margin: 2rem 0;
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  /* Changed: Border color to light gray */
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Added soft shadow */
 }
 
 .hero h1 {
   font-size: 3.5rem;
   margin-bottom: 1rem;
   font-weight: 700;
-  color: #10b981;
+  /* Keeping this as the main accent color, Black for now to fulfill the request, but often this is an accent color */
+  color: #000000;
 }
 
 .hero .tagline {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  opacity: 0.9;
-  color: #d1d5db;
+  opacity: 1;
+  /* Changed: Tagline text color to Black */
+  color: #000000;
 }
 
 .cta-buttons {
@@ -61,6 +70,9 @@
   flex-wrap: wrap;
 }
 
+/* Assuming buttons here are part of the 'button blue' request: */
+/* The buttons themselves are not styled here, but assume they follow the previous blue button style */
+/* If a generic button style was present, it would be modified to be blue/white */
 
 
 /* ===============================
@@ -71,21 +83,26 @@
   text-align: center;
   margin-top: 3rem;
   padding: 2rem;
-  background: rgba(15, 32, 39, 0.9);
+  /* Changed: Background to White */
+  background: white;
   border-radius: 15px;
-  color: #d1d5db;
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  /* Changed: Text color to Black */
+  color: #000000;
+  /* Changed: Border color to light gray */
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .github-section a {
-  color: #10b981;
+  /* Keeping the link color as an accent (often blue/green in light mode) */
+  color: #3b82f6; 
   text-decoration: none;
   font-weight: 600;
   font-size: 1.2rem;
 }
 
 .github-section a:hover {
-  color: #0f766e;
+  color: #2563eb;
 }
 
 /* ===============================
@@ -93,20 +110,25 @@
 ================================ */
 
 .skill-category {
-  background: rgba(248, 250, 252, 0.1);
+  /* Changed: Background to White */
+  background: rgb(212, 7, 7);
   padding: 2rem;
   border-radius: 15px;
   text-align: center;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .skill-category h3 {
+  /* Keeping the color of the text the original accent color */
   color: #10b981;
   margin-bottom: 1rem;
 }
 
 .skill-tag {
-  background: #2563eb;
-  color: white;
+  /* Assuming this is a button-like element, keeping it blue/white for accent */
+  background: #3b82f6;
+  color: rgb(4, 4, 233);
   padding: 0.5rem 1rem;
   border-radius: 25px;
   font-size: 0.9rem;
@@ -120,11 +142,15 @@
 
 .social-proof {
   text-align: center;
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
+  /* Changed: Background to White */
+  background: white;
+  /* Changed: Text color to Black */
+  color: #000000;
   padding: 3rem 2rem;
   border-radius: 20px;
   margin: 4rem 0;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .social-stats {
@@ -154,9 +180,12 @@
 }
 
 .contact-info {
-  background: #0a1722;
+  /* Changed: Background to White */
+  background: white;
   padding: 2rem;
   border-radius: 15px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .contact-form {
@@ -169,14 +198,19 @@
   width: 100%;
   padding: 0.75rem;
   border-radius: 4px;
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #e5e7eb;
+  /* Changed: Input border color to light gray */
+  border: 1px solid #d1d5db;
+  /* Changed: Input background to White */
+  background-color: white;
+  /* Changed: Input text color to Black */
+  color: #000000;
 }
 
 .contact-form button {
-  background-color: #10b981;
-  color: white;
+  /* Changed: Button color to Blue */
+  background-color: #3b82f6;
+  /* Changed: Button text color to White */
+  color: rgb(236, 14, 14);
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
@@ -185,7 +219,8 @@
 }
 
 .contact-form button:hover {
-  background-color: #0f766e;
+  /* Changed: Button hover color to Darker Blue */
+  background-color: #2563eb;
 }
 
 /* ===============================
@@ -194,11 +229,14 @@
 ================================ */
 
 .interests-section {
-  background: rgba(16, 185, 129, 0.05);
+  /* Changed: Background to White */
+  background: white;
   padding: 3rem 2rem;
   border-radius: 20px;
   margin: 4rem 0;
-  border: 1px solid rgba(16, 185, 129, 0.1);
+  /* Changed: Border color to light gray */
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .interests-content {
@@ -209,11 +247,13 @@
 
 .interests-content h2 {
   font-size: 2.5rem;
+  /* Keeping the color of the text the original accent color */
   color: #10b981;
   margin-bottom: 2rem;
 }
 
 .skill-tags {
+  color: #000000;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -233,6 +273,7 @@
 
 .about-text h2 {
   font-size: 2.5rem;
+  /* Keeping the color of the text the original accent color */
   color: #10b981;
   margin-bottom: 2rem;
 }
@@ -240,21 +281,26 @@
 .about-text p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  color: #d1d5db;
+  /* Changed: Paragraph text color to Black */
+  color: #000000;
   line-height: 1.8;
 }
 
 .achievements {
-  background: rgba(16, 185, 129, 0.1);
+  /* Changed: Background to White */
+  background: white;
   padding: 2rem;
   border-radius: 15px;
+  /* Keeping the accent line */
   border-left: 5px solid #10b981;
   margin-top: 2rem;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .achievements h3 {
+  /* Keeping the accent color */
   color: #10b981;
   margin-bottom: 1.5rem;
   font-size: 1.4rem;
 }
-

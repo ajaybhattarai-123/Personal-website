@@ -1,0 +1,2790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBC 205:2024 Engineering Master Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 h-screen flex flex-col overflow-hidden">
+    <!-- Header with Return Button -->
+    <header class="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center shadow-sm z-10">
+        <div class="flex items-center gap-3">
+            <div class="bg-blue-600 text-white p-2 rounded-lg font-bold text-lg shadow-blue-200">NBC</div>
+            <div>
+                <h1 class="font-bold text-lg md:text-xl text-slate-900 leading-tight">NBC 205:2024</h1>
+                <p class="text-xs text-slate-500 font-medium">Ready-to-Use Detailing Guideline</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="main.HTML"
+                class="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition text-sm font-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Return to Main Site
+            </a>
+            <div class="text-right hidden sm:block border-l pl-4 border-slate-200">
+                <div class="text-sm font-semibold text-slate-600">Engineering Quiz</div>
+                <div class="text-xs text-slate-400">100 Questions</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 overflow-y-auto relative p-4 md:p-8 flex justify-center" id="main-container">
+        <!-- Welcome Screen -->
+        <div id="start-screen" class="max-w-2xl w-full text-center space-y-8 my-auto fade-in">
+            <div class="bg-white p-10 rounded-2xl shadow-xl border border-slate-100">
+                <div
+                    class="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Detailed Mastery Quiz</h2>
+                <p class="text-slate-600 mb-8 text-lg">Test your knowledge of the NBC 205:2024 building code. This
+                    comprehensive quiz covers site selection, structural detailing, materials, and seismic safety
+                    protocols.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 text-left">
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <span class="block text-2xl font-bold text-blue-600">100</span>
+                        <span class="text-sm text-slate-500">Questions</span>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <span class="block text-2xl font-bold text-emerald-600">Hints</span>
+                        <span class="text-sm text-slate-500">Available</span>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                        <span class="block text-2xl font-bold text-indigo-600">Instant</span>
+                        <span class="text-sm text-slate-500">Feedback</span>
+                    </div>
+                </div>
+                <button onclick="startQuiz()"
+                    class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl transition transform hover:-translate-y-1 shadow-lg shadow-blue-200 text-lg">
+                    Start Assessment
+                </button>
+            </div>
+        </div>
+
+        <!-- Quiz Interface -->
+        <div id="quiz-interface" class="hidden max-w-3xl w-full mx-auto pb-20">
+            <div class="mb-6 bg-white rounded-full h-4 shadow-inner overflow-hidden border border-slate-100">
+                <div id="progress-bar" class="bg-blue-600 h-full rounded-full transition-all duration-500 ease-out"
+                    style="width: 0%"></div>
+            </div>
+            <div class="flex justify-between items-center mb-4 text-sm font-medium text-slate-500 px-1">
+                <span>Question <span id="current-q-num" class="text-slate-900">1</span>/<span
+                        id="total-q-num">100</span></span>
+                <span>Score: <span id="score" class="text-blue-600 font-bold">0</span></span>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden fade-in relative">
+                <div class="p-6 md:p-8 border-b border-slate-100">
+                    <h3 id="question-text" class="text-xl md:text-2xl font-bold text-slate-800 leading-snug"></h3>
+                </div>
+                <div id="hint-box" class="hidden bg-yellow-50 border-l-4 border-yellow-400 p-4 mx-6 mt-6 rounded-r-lg">
+                    <div class="flex items-start">
+                        <svg class="h-5 w-5 text-yellow-500 mr-2 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div>
+                            <p class="font-bold text-yellow-800 text-sm">Hint</p>
+                            <p id="hint-text" class="text-yellow-700 text-sm italic mt-1"></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="options-container" class="p-6 md:p-8 grid gap-4"></div>
+                <div id="rationale-box"
+                    class="hidden bg-slate-50 border-t border-slate-100 p-6 md:p-8 animate-in slide-in-from-bottom-2">
+                    <div class="flex items-start gap-4">
+                        <div id="rationale-icon" class="mt-1"></div>
+                        <div>
+                            <h4 id="rationale-title" class="font-bold text-lg mb-2"></h4>
+                            <p id="rationale-text" class="text-slate-600 leading-relaxed"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between items-center mt-6 gap-4">
+                <button onclick="toggleHint()" id="hint-btn"
+                    class="flex items-center text-slate-500 hover:text-blue-600 font-medium transition px-4 py-2 rounded-lg hover:bg-slate-100">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548 5.478a1 1 0 01-.994.902h-4.08a1 1 0 01-.995-.902l-.548-5.478z">
+                        </path>
+                    </svg>
+                    Need a Hint?
+                </button>
+                <div class="flex gap-3">
+                    <button id="prev-btn" onclick="prevQuestion()"
+                        class="hidden bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3 px-6 rounded-xl shadow transition-all flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                        </svg>
+                        Previous
+                    </button>
+                    <button id="next-btn" onclick="nextQuestion()"
+                        class="hidden bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition-all flex items-center">
+                        <span id="next-btn-text">Next</span>
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Screen -->
+        <div id="end-screen" class="hidden max-w-2xl w-full text-center space-y-8 my-auto fade-in">
+            <div class="bg-white p-10 rounded-2xl shadow-xl border border-slate-200">
+                <div class="mb-6">
+                    <div class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Final Score</div>
+                    <div class="text-6xl font-black text-blue-600 mb-2"><span id="final-score-percent">0</span>%</div>
+                    <div
+                        class="text-xl text-slate-700 font-medium mb-4 bg-slate-50 inline-block px-4 py-2 rounded-lg border border-slate-100">
+                        You answered <span id="final-raw-score" class="font-bold text-slate-900">0</span> out of <span
+                            id="final-total-questions" class="font-bold text-slate-900">100</span> correctly
+                    </div>
+                    <p id="final-message" class="text-xl text-slate-700 font-medium mt-4"></p>
+                </div>
+                <div class="h-2 bg-slate-100 rounded-full mb-8 overflow-hidden">
+                    <div id="final-progress" class="h-full bg-blue-600"></div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="location.reload()"
+                        class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold py-4 rounded-xl transition">
+                        Restart Quiz
+                    </button>
+                    <button onclick="reviewAnswers()"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition shadow-lg shadow-blue-200">
+                        Review All
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const questions = [
+
+            {
+                "q": "What is the main objective of NBC 205:2024?",
+                "options": [
+                    "To provide mandatory rules for high-rise buildings",
+                    "To provide ready-to-use drawings for low-rise reinforced concrete buildings",
+                    "To replace all previous building codes in Nepal",
+                    "To regulate construction in rural areas only"
+                ],
+                "correct": 1,
+                "rationale": "The primary purpose of NBC 205:2024 is to offer ready-to-use design and detailing drawings specifically for low-rise reinforced concrete frame buildings.",
+                "hint": "Think about the specific type of building and the 'ready-to-use' nature of the document."
+            },
+            {
+                "q": "Which earlier version does NBC 205:2024 replace?",
+                "options": [
+                    "NBC 205:1994",
+                    "NBC 105:1994",
+                    "NBC 205:2000",
+                    "NBC 105:2020"
+                ],
+                "correct": 0,
+                "rationale": "NBC 205:2024 is the revised version that supersedes the original NBC 205:1994.",
+                "hint": "Look for the same code number with the original publication year."
+            },
+            {
+                "q": "The code is primarily intended for buildings under which category of the Building Act, 2055?",
+                "options": [
+                    "Category A",
+                    "Category B",
+                    "Category C",
+                    "Category D"
+                ],
+                "correct": 2,
+                "rationale": "This guideline is mandatory for Category C buildings as defined in the Building Act, 2055.",
+                "hint": "It applies to smaller, standard residential structures which often fall into the third category."
+            },
+            {
+                "q": "Who primarily uses this Ready-to-Use Detailing (RUD) guideline?",
+                "options": [
+                    "Professional structural engineers",
+                    "Mid-level technicians and sub-engineers",
+                    "Architects",
+                    "Municipal officers"
+                ],
+                "correct": 1,
+                "rationale": "The RUD is designed to be accessible and usable by mid-level technicians and sub-engineers to ensure safe construction without complex engineering analysis.",
+                "hint": "The target audience includes those supervising construction on-site who may not be full structural engineers."
+            },
+            {
+                "q": "When was NBC 205:2024 approved by the Ministry of Urban Development?",
+                "options": [
+                    "2080/11/30",
+                    "2081/1/30",
+                    "2081/02/28",
+                    "2080/12/30"
+                ],
+                "correct": 1,
+                "rationale": "The code was approved by the Ministry of Urban Development on 2081/1/30.",
+                "hint": "The approval date is in early 2081 B.S."
+            },
+            {
+                "q": "This RUD guideline is applicable to buildings of which type?",
+                "options": [
+                    "Steel-framed buildings",
+                    "Masonry-infilled RC buildings",
+                    "RC frame buildings without masonry infill",
+                    "Timber structures"
+                ],
+                "correct": 2,
+                "rationale": "As per Section 2 (Scope), the guideline applies to RC frame buildings designed as bare frames without relying on masonry infill for structural strength.",
+                "hint": "Consider the structural material and the framing system."
+            },
+            {
+                "q": "What is the maximum number of storeys allowed under this guideline?",
+                "options": [
+                    "2 storeys",
+                    "3 storeys",
+                    "4 storeys",
+                    "5 storeys"
+                ],
+                "correct": 1,
+                "rationale": "The guideline limits the building height to a maximum of 3 storeys (up to 12 meters).",
+                "hint": "It is intended for low-rise residential buildings."
+            },
+            {
+                "q": "Which occupancy type is covered by this RUD?",
+                "options": [
+                    "Commercial complexes",
+                    "Industrial buildings",
+                    "Normal residential buildings",
+                    "Hospitals"
+                ],
+                "correct": 2,
+                "rationale": "The scope is strictly limited to normal residential buildings, not commercial or industrial structures.",
+                "hint": "Think of the most common type of housing construction."
+            },
+            {
+                "q": "The RUD guideline is based on which seismic design code?",
+                "options": [
+                    "NBC 105:1994",
+                    "NBC 105:2020",
+                    "IS 456:2000",
+                    "IS 875"
+                ],
+                "correct": 1,
+                "rationale": "NBC 205:2024 is aligned with the updated seismic design standards of NBC 105:2020.",
+                "hint": "It follows the most recent Nepal Building Code for seismic design."
+            },
+            {
+                "q": "Which of the following is NOT a limitation mentioned in Section 4?",
+                "options": [
+                    "Building height ≤ 12 m",
+                    "Cantilever projection ≤ 1 m",
+                    "Coverage area ≤ 2000 sq. ft.",
+                    "Plan shape excluding wings shall be rectangular"
+                ],
+                "correct": 2,
+                "rationale": "Section 4 lists height, cantilever, and shape limitations, but a specific coverage area limit of 2000 sq. ft. is not a stated restriction in this context.",
+                "hint": "Look for the option related to the total area which isn't a standard restriction in this section."
+            },
+            {
+                "q": "In this guideline, the word “shall” indicates:",
+                "options": [
+                    "Recommended practice",
+                    "Mandatory requirement",
+                    "Optional suggestion",
+                    "Advisory note"
+                ],
+                "correct": 1,
+                "rationale": "In legal and code terminology, 'shall' denotes a mandatory requirement that must be followed.",
+                "hint": "It is the standard legal term for obligation."
+            },
+            {
+                "q": "What does “Base Shear” mean?",
+                "options": [
+                    "Total vertical load on foundation",
+                    "Total design lateral force due to earthquake at the base of structure",
+                    "Shear force in beams",
+                    "Wind load at roof level"
+                ],
+                "correct": 1,
+                "rationale": "Base shear is defined as the total design lateral force generated at the base of a structure due to seismic activity.",
+                "hint": "It concerns lateral forces at the foundation level."
+            },
+            {
+                "q": "Which of the following is defined as “Soft Storey”?",
+                "options": [
+                    "Storey with fewer walls",
+                    "Storey where lateral stiffness is less than 70% of storey above",
+                    "Storey with flexible floors",
+                    "Storey with large openings"
+                ],
+                "correct": 1,
+                "rationale": "A soft storey is defined by a significant reduction in lateral stiffness compared to the storey immediately above it.",
+                "hint": "Focus on the percentage comparison of stiffness."
+            },
+            {
+                "q": "What is “Development Length”?",
+                "options": [
+                    "Length of beam between two columns",
+                    "Length of embedment needed to transfer stress into concrete",
+                    "Length of lap splice in column",
+                    "Length of foundation below ground"
+                ],
+                "correct": 1,
+                "rationale": "Development length is the length of reinforcement that must be embedded in concrete to ensure the transfer of bond stresses.",
+                "hint": "It relates to anchoring the bar into the concrete."
+            },
+            {
+                "q": "“Ties/Cross Ties” in columns refer to:",
+                "options": [
+                    "Longitudinal bars",
+                    "Continuous reinforcing rebar with 135° hooks",
+                    "Starter bars in footing",
+                    "Bar chairs in slabs"
+                ],
+                "correct": 1,
+                "rationale": "Ties are transverse reinforcement (stirrups) with 135-degree hooks used to confine the concrete and longitudinal bars.",
+                "hint": "These are used for confinement and shear, not main loading."
+            },
+            {
+                "q": "Which of the following sites is NOT suitable for construction under this RUD?",
+                "options": [
+                    "Water-logged area",
+                    "Rocky terrain",
+                    "Steep sloping terrain requiring step-back building",
+                    "Flat terrain with good drainage"
+                ],
+                "correct": 0,
+                "rationale": "Water-logged areas pose significant foundation risks and are not suitable for the standard designs provided in this RUD.",
+                "hint": "Consider the soil condition that most severely affects stability."
+            },
+            {
+                "q": "Minimum depth of exploration for site investigation is:",
+                "options": [
+                    "1.0 m",
+                    "1.5 m",
+                    "2.0 m",
+                    "2.5 m"
+                ],
+                "correct": 1,
+                "rationale": "The code requires exploring the soil to a minimum depth of 1.5 meters to ensure adequate bearing strata.",
+                "hint": "It is slightly less than the height of an average person."
+            },
+            {
+                "q": "Which soil classification is given for “stiff to medium clay which is readily indented with a thumb nail”?",
+                "options": [
+                    "Hard",
+                    "Medium",
+                    "Soft",
+                    "Weak"
+                ],
+                "correct": 0,
+                "rationale": "Soil that is stiff to medium clay and can be indented with a thumbnail is classified as 'Hard' in the context of this code's simple soil classification.",
+                "hint": "Despite being indentable, it is considered competent for these small structures."
+            },
+            {
+                "q": "The Dropping Weight Method uses how many stacked bricks?",
+                "options": [
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ],
+                "correct": 2,
+                "rationale": "The standard field test described involves dropping a weight on a stack of 4 bricks.",
+                "hint": "Count the bricks in the standard stack test."
+            },
+            {
+                "q": "If the average impression depth d_avg is 15 mm, what is the approximate soil bearing capacity?",
+                "options": [
+                    "200 kN/m²",
+                    "150 kN/m²",
+                    "100 kN/m²",
+                    "75 kN/m²"
+                ],
+                "correct": 1,
+                "rationale": "An impression depth of roughly 15mm correlates to a Safe Bearing Capacity (SBC) of approximately 150 kN/m².",
+                "hint": "15mm corresponds to the middle tier of bearing capacity."
+            },
+            {
+                "q": "Maximum building height above lateral restraint is:",
+                "options": [
+                    "10 m",
+                    "12 m",
+                    "15 m",
+                    "18 m"
+                ],
+                "correct": 1,
+                "rationale": "Section 5 restricts the maximum building height to 12 meters.",
+                "hint": "This matches the 3-storey limitation."
+            },
+            {
+                "q": "Maximum cantilever projection allowed is:",
+                "options": [
+                    "0.5 m",
+                    "1.0 m",
+                    "1.5 m",
+                    "2.0 m"
+                ],
+                "correct": 1,
+                "rationale": "To ensure stability and reduce seismic risk, cantilever projections are strictly limited to 1.0 meter.",
+                "hint": "It is one unit of the metric system."
+            },
+            {
+                "q": "The ratio of building length to width (A/B) must NOT exceed:",
+                "options": [
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ],
+                "correct": 1,
+                "rationale": "The aspect ratio of the building plan should not exceed 3 to prevent excessive torsional effects.",
+                "hint": "The building shouldn't be more than three times as long as it is wide."
+            },
+            {
+                "q": "Maximum panel area (a x b) should NOT exceed:",
+                "options": [
+                    "10.5 sq. m",
+                    "13.5 sq. m",
+                    "15.0 sq. m",
+                    "18.0 sq. m"
+                ],
+                "correct": 1,
+                "rationale": "The structural grid or panel area is limited to 13.5 square meters to control slab spans and loads.",
+                "hint": "It is between 13 and 14 square meters."
+            },
+            {
+                "q": "Maximum height of a single storey is limited to:",
+                "options": [
+                    "3.0 m",
+                    "3.2 m",
+                    "3.5 m",
+                    "4.0 m"
+                ],
+                "correct": 1,
+                "rationale": "The floor-to-floor height for any single storey must not exceed 3.2 meters.",
+                "hint": "Slightly more than 3 meters."
+            },
+            {
+                "q": "Minimum compressive strength of concrete at 28 days is:",
+                "options": [
+                    "15 N/mm²",
+                    "20 N/mm²",
+                    "25 N/mm²",
+                    "30 N/mm²"
+                ],
+                "correct": 1,
+                "rationale": "The code mandates a minimum concrete grade of M20, which is 20 N/mm².",
+                "hint": "M20 is the standard structural grade."
+            },
+            {
+                "q": "Recommended cement type is:",
+                "options": [
+                    "Rapid hardening Portland cement",
+                    "Ordinary Portland Cement (NS 572:2076)",
+                    "Sulphate resisting cement",
+                    "Blended cement"
+                ],
+                "correct": 1,
+                "rationale": "Ordinary Portland Cement conforming to NS 572:2076 is the recommended binder.",
+                "hint": "The standard OPC."
+            },
+            {
+                "q": "Standard brick compressive strength should NOT be less than:",
+                "options": [
+                    "3.5 N/mm²",
+                    "5.0 N/mm²",
+                    "7.5 N/mm²",
+                    "10.0 N/mm²"
+                ],
+                "correct": 0,
+                "rationale": "Bricks must have a minimum crushing strength of 3.5 N/mm² to be used in construction.",
+                "hint": "This is a common minimum standard for masonry units."
+            },
+            {
+                "q": "Mortar mix for one-brick thick wall is:",
+                "options": [
+                    "1:4",
+                    "1:6",
+                    "1:8",
+                    "1:10"
+                ],
+                "correct": 1,
+                "rationale": "For a standard one-brick thick wall, a mortar ratio of 1:6 (cement:sand) is specified.",
+                "hint": "A common mix for general masonry."
+            },
+            {
+                "q": "Reinforcing steel bars shall be:",
+                "options": [
+                    "Fe 415",
+                    "Fe 500",
+                    "Fe 550",
+                    "Fe 600"
+                ],
+                "correct": 1,
+                "rationale": "The design assumes high-yield strength deformed bars of grade Fe 500.",
+                "hint": "The grade number is 500."
+            },
+            {
+                "q": "The total horizontal seismic base shear V is calculated as:",
+                "options": [
+                    "V = Cd(Ti) × W",
+                    "V = Z × I × W",
+                    "V = Ch(T) × W",
+                    "V = Rij × Ωu × W"
+                ],
+                "correct": 0,
+                "rationale": "Base shear is calculated using the design spectral coefficient Cd(Ti) multiplied by the seismic weight W.",
+                "hint": "Look for the formula involving the design coefficient and Weight."
+            },
+            {
+                "q": "For serviceability limit state, the design seismic coefficient is:",
+                "options": [
+                    "Cs(T1)/Ωs",
+                    "C(T1)/RijΩu",
+                    "Ch(T)ZI",
+                    "Cs(T)=0.5C(T)"
+                ],
+                "correct": 0,
+                "rationale": "The serviceability design coefficient is derived by dividing the elastic coefficient by the overstrength factor Ωs.",
+                "hint": "It involves the term Ωs."
+            },
+            {
+                "q": "The time period for moment resisting concrete frame by empirical method is:",
+                "options": [
+                    "T1 = 0.075h^0.75",
+                    "T1 = 0.085h",
+                    "T1 = 0.05h",
+                    "T1 = 0.075h"
+                ],
+                "correct": 0,
+                "rationale": "The empirical formula for the fundamental time period of a concrete moment frame is typically T = 0.075 * h^(0.75). (Note: The option provided in source 'T1=0.075h' is likely a simplified notation or typo in source, but matches the key 'a'.)",
+                "hint": "The coefficient is 0.075."
+            },
+            {
+                "q": "Site subsoil category D applies to which municipality?",
+                "options": [
+                    "Pokhara",
+                    "Kathmandu",
+                    "Birgunj",
+                    "Dharan"
+                ],
+                "correct": 1,
+                "rationale": "Kathmandu is classified under Site Subsoil Category D due to its soft soil deposits.",
+                "hint": "The capital city."
+            },
+            {
+                "q": "Inter-storey drift at ultimate limit state should NOT exceed:",
+                "options": [
+                    "0.010",
+                    "0.015",
+                    "0.020",
+                    "0.025"
+                ],
+                "correct": 3,
+                "rationale": "At the ultimate limit state, the code restricts inter-storey drift to 0.025 times the storey height.",
+                "hint": "2.5% of the height."
+            },
+            {
+                "q": "For two-storey building with SBC = 200 kN/m², what is the footing size for a corner column?",
+                "options": [
+                    "1.5 m x 1.5 m",
+                    "1.6 m x 1.6 m",
+                    "1.85 m x 1.85 m",
+                    "2.0 m x 2.0 m"
+                ],
+                "correct": 0,
+                "rationale": "For high bearing capacity (200 kN/m²) and a small building (2-storey), the corner footing can be 1.5m square.",
+                "hint": "The smallest option usually suffices for good soil."
+            },
+            {
+                "q": "Minimum thickness of isolated footing for two-storey building is:",
+                "options": [
+                    "300 mm",
+                    "350 mm",
+                    "400 mm",
+                    "450 mm"
+                ],
+                "correct": 1,
+                "rationale": "The minimum specified thickness for footings in a two-storey structure is 350 mm.",
+                "hint": "It is 35 cm."
+            },
+            {
+                "q": "Eccentric footing must be accompanied by:",
+                "options": [
+                    "Combined footing",
+                    "Strap beam",
+                    "Pile foundation",
+                    "Raft foundation"
+                ],
+                "correct": 1,
+                "rationale": "Eccentric footings require a strap beam to connect them to an interior column and handle the moment.",
+                "hint": "A beam that 'straps' the footing."
+            },
+            {
+                "q": "For SBC = 100 kN/m², what is the footing size for a staircase column?",
+                "options": [
+                    "1.6 m x 1.6 m",
+                    "1.85 m x 1.85 m",
+                    "2.3 m x 2.3 m",
+                    "2.5 m x 2.5 m"
+                ],
+                "correct": 2,
+                "rationale": "With lower soil bearing capacity (100 kN/m²), the footing size increases to 2.3m x 2.3m for staircase columns.",
+                "hint": "Look for the size 2.3 m."
+            },
+            {
+                "q": "Reinforcement in isolated footing is provided:",
+                "options": [
+                    "Only at bottom",
+                    "Only at top",
+                    "Both top and bottom",
+                    "Each way (both directions)"
+                ],
+                "correct": 3,
+                "rationale": "Reinforcement in isolated footings is laid as a mesh in both orthogonal directions (each way) at the bottom.",
+                "hint": "It must resist bending in two directions."
+            },
+            {
+                "q": "Standard column size for two-storey building is:",
+                "options": [
+                    "300 mm x 300 mm",
+                    "350 mm x 350 mm",
+                    "400 mm x 400 mm",
+                    "450 mm x 450 mm"
+                ],
+                "correct": 1,
+                "rationale": "The standard column section specified for two-storey buildings is 350 mm x 350 mm.",
+                "hint": "35 cm square."
+            },
+            {
+                "q": "Maximum percentage of bars spliced at one section in a column is:",
+                "options": [
+                    "25%",
+                    "50%",
+                    "75%",
+                    "100%"
+                ],
+                "correct": 1,
+                "rationale": "To prevent a weak plane, only 50% of the longitudinal bars should be spliced at any single section.",
+                "hint": "Half of the bars."
+            },
+            {
+                "q": "Transverse reinforcement in column splicing zone is spaced at:",
+                "options": [
+                    "75 mm c/c",
+                    "100 mm c/c",
+                    "125 mm c/c",
+                    "150 mm c/c"
+                ],
+                "correct": 0,
+                "rationale": "In the splicing zone, closer spacing of stirrups (75 mm) is required for confinement.",
+                "hint": "The tightest spacing listed."
+            },
+            {
+                "q": "For seismic zone factor 0.35 and site category C, corner column reinforcement in ground floor is:",
+                "options": [
+                    "4-16Ø + 4-12Ø",
+                    "8-16Ø",
+                    "4-20Ø + 4-16Ø",
+                    "8-12Ø"
+                ],
+                "correct": 2,
+                "rationale": "For higher seismic demand (Zone 0.35, Soil C), heavier reinforcement (4-20mm + 4-16mm) is required in corner columns.",
+                "hint": "It uses a mix of 20mm and 16mm bars."
+            },
+            {
+                "q": "Clear cover to stirrups in column is:",
+                "options": [
+                    "25 mm",
+                    "40 mm",
+                    "50 mm",
+                    "75 mm"
+                ],
+                "correct": 1,
+                "rationale": "The minimum clear cover for column reinforcement is 40 mm.",
+                "hint": "Standard cover for columns."
+            },
+            {
+                "q": "Plinth beam size is:",
+                "options": [
+                    "250 mm x 355 mm",
+                    "300 mm x 450 mm",
+                    "350 mm x 350 mm",
+                    "400 mm x 400 mm"
+                ],
+                "correct": 0,
+                "rationale": "The standard plinth beam size is 250 mm wide by 355 mm deep.",
+                "hint": "It is rectangular, not square."
+            },
+            {
+                "q": "Extra bars in beams are curtailed at what distance from support?",
+                "options": [
+                    "0.1 L",
+                    "0.2 L",
+                    "0.3 L",
+                    "0.4 L"
+                ],
+                "correct": 2,
+                "rationale": "Top extra bars are generally curtailed at 0.3 times the span length (L) from the support.",
+                "hint": "30% of the span."
+            },
+            {
+                "q": "Stirrups in beam end zones are spaced at:",
+                "options": [
+                    "100 mm c/c",
+                    "150 mm c/c",
+                    "200 mm c/c",
+                    "250 mm c/c"
+                ],
+                "correct": 0,
+                "rationale": "The end zones of beams (plastic hinge regions) require stirrups spaced at 100 mm for ductility.",
+                "hint": "10 cm spacing."
+            },
+            {
+                "q": "For seismic zone factor 0.4, beam bottom extra bars are provided in:",
+                "options": [
+                    "All spans",
+                    "Spans > 3 m only",
+                    "End spans only",
+                    "Not provided"
+                ],
+                "correct": 1,
+                "rationale": "In high seismic zones (0.4), bottom extra reinforcement is specifically required for longer spans (> 3 m).",
+                "hint": "Only for spans exceeding 3 meters."
+            },
+            {
+                "q": "Anchorage length of beam longitudinal bars into column for beam depth 355 mm is:",
+                "options": [
+                    "250 mm",
+                    "300 mm",
+                    "350 mm",
+                    "400 mm"
+                ],
+                "correct": 1,
+                "rationale": "The required anchorage length into the column is 300 mm for this beam depth.",
+                "hint": "30 cm."
+            },
+            {
+                "q": "For three-storey building with SBC = 150 kN/m², footing size for interior column is:",
+                "options": [
+                    "1.6 m x 1.6 m",
+                    "1.9 m x 1.9 m",
+                    "2.4 m x 2.4 m",
+                    "2.8 m x 2.8 m"
+                ],
+                "correct": 1,
+                "rationale": "For an interior column in a 3-storey building with medium soil, a 1.9m square footing is specified.",
+                "hint": "Just under 2 meters."
+            },
+            {
+                "q": "Minimum thickness of isolated footing for three-storey building is:",
+                "options": [
+                    "350 mm",
+                    "400 mm",
+                    "450 mm",
+                    "500 mm"
+                ],
+                "correct": 1,
+                "rationale": "Three-storey buildings require a slightly thicker footing of 400 mm compared to two-storey buildings.",
+                "hint": "40 cm."
+            },
+            {
+                "q": "For eccentric footing with SBC = 200 kN/m², strap beam size is:",
+                "options": [
+                    "400 mm x 450 mm",
+                    "450 mm x 500 mm",
+                    "500 mm x 550 mm",
+                    "600 mm x 600 mm"
+                ],
+                "correct": 0,
+                "rationale": "The strap beam connecting eccentric footings in this condition should be 400 mm x 450 mm.",
+                "hint": "400 by 450."
+            },
+            {
+                "q": "Reinforcement in strap beam consists of:",
+                "options": [
+                    "6-16Ø top & bottom",
+                    "8-16Ø top & bottom",
+                    "8-12Ø top & bottom",
+                    "10-16Ø top & bottom"
+                ],
+                "correct": 1,
+                "rationale": "Strap beams are heavily reinforced with 8 bars of 16mm diameter (split between top and bottom).",
+                "hint": "Total 8 bars of 16mm."
+            },
+            {
+                "q": "For SBC = 100 kN/m², footing size for face column is:",
+                "options": [
+                    "1.9 m x 1.9 m",
+                    "2.4 m x 2.4 m",
+                    "2.8 m x 2.8 m",
+                    "3.0 m x 3.0 m"
+                ],
+                "correct": 1,
+                "rationale": "Face columns on weaker soil (100 kN/m²) need larger footings, specified as 2.4m x 2.4m.",
+                "hint": "2.4 meters square."
+            },
+            {
+                "q": "For three-storey building in seismic zone 0.35, staircase column size in ground floor is:",
+                "options": [
+                    "350 mm x 350 mm",
+                    "400 mm x 400 mm",
+                    "450 mm x 450 mm",
+                    "500 mm x 500 mm"
+                ],
+                "correct": 1,
+                "rationale": "Staircase columns attract more load; in zone 0.35, they must be 400 mm x 400 mm.",
+                "hint": "40 cm square."
+            },
+            {
+                "q": "Transverse reinforcement spacing in column outside splicing zone is:",
+                "options": [
+                    "75 mm c/c",
+                    "100 mm c/c",
+                    "125 mm c/c",
+                    "150 mm c/c"
+                ],
+                "correct": 2,
+                "rationale": "Outside the critical splicing zone, stirrup spacing can be increased to 125 mm.",
+                "hint": "12.5 cm."
+            },
+            {
+                "q": "Maximum number of longitudinal bars in a 400 mm x 400 mm column can be:",
+                "options": [
+                    "8",
+                    "12",
+                    "16",
+                    "20"
+                ],
+                "correct": 1,
+                "rationale": "To avoid congestion, the maximum number of longitudinal bars is practically limited, typically 12 bars for this size in these templates.",
+                "hint": "A dozen bars."
+            },
+            {
+                "q": "For seismic zone 0.4, corner column reinforcement in ground floor is:",
+                "options": [
+                    "8-20Ø",
+                    "4-20Ø + 4-16Ø",
+                    "12-16Ø",
+                    "8-16Ø + 4-12Ø"
+                ],
+                "correct": 0,
+                "rationale": "In the highest seismic zone (0.4), corner columns require 8 bars of 20mm diameter.",
+                "hint": "8 bars of the 20mm size."
+            },
+            {
+                "q": "Lapping length for 16 mm bar in M20 concrete is:",
+                "options": [
+                    "690 mm",
+                    "920 mm",
+                    "1150 mm",
+                    "1380 mm"
+                ],
+                "correct": 1,
+                "rationale": "The lap length is typically 57.5 times the diameter. 57.5 * 16 = 920 mm.",
+                "hint": "Calculate 57.5 * 16."
+            },
+            {
+                "q": "Beam size for first floor in seismic zone 0.4 is:",
+                "options": [
+                    "250 mm x 355 mm",
+                    "250 mm x 380 mm",
+                    "300 mm x 380 mm",
+                    "350 mm x 450 mm"
+                ],
+                "correct": 2,
+                "rationale": "For high seismic zones, the beam section is increased to 300 mm x 380 mm.",
+                "hint": "Wider than the standard 250mm."
+            },
+            {
+                "q": "Stirrups in 300 mm x 380 mm beam are:",
+                "options": [
+                    "2-legged",
+                    "3-legged",
+                    "4-legged",
+                    "5-legged"
+                ],
+                "correct": 2,
+                "rationale": "Wider beams (300mm) generally require 4-legged stirrups to effectively confine the core and hold bars.",
+                "hint": "Four legs."
+            },
+            {
+                "q": "Top extra bars in beam are provided up to:",
+                "options": [
+                    "Mid-span only",
+                    "0.25 L from support",
+                    "0.3 L from support",
+                    "Full span"
+                ],
+                "correct": 2,
+                "rationale": "Top reinforcement extends 0.3L from the support to handle negative moments.",
+                "hint": "30% of the length."
+            },
+            {
+                "q": "For seismic zone 0.35, bottom extra bars in first floor beam are provided for:",
+                "options": [
+                    "All beams",
+                    "Beam 1 only",
+                    "Beam 2 only",
+                    "Not provided"
+                ],
+                "correct": 1,
+                "rationale": "Table 9-11/9-12 specifications indicate bottom extra bars are needed specifically for Beam 1 in this zone.",
+                "hint": "Beam 1."
+            },
+            {
+                "q": "Minimum hook length for closed stirrups is:",
+                "options": [
+                    "50 mm",
+                    "65 mm",
+                    "75 mm",
+                    "100 mm"
+                ],
+                "correct": 1,
+                "rationale": "The hook extension for stirrups should be at least 65 mm (or 6d) to ensure anchorage.",
+                "hint": "65 mm."
+            },
+            {
+                "q": "Slab thickness for floors and roof is:",
+                "options": [
+                    "100 mm",
+                    "125 mm",
+                    "150 mm",
+                    "200 mm"
+                ],
+                "correct": 1,
+                "rationale": "The standard slab thickness specified is 125 mm.",
+                "hint": "12.5 cm."
+            },
+            {
+                "q": "Main reinforcement in slab is:",
+                "options": [
+                    "8Ø @ 150 mm c/c",
+                    "10Ø @ 150 mm c/c",
+                    "12Ø @ 150 mm c/c",
+                    "16Ø @ 150 mm c/c"
+                ],
+                "correct": 0,
+                "rationale": "Slabs are typically reinforced with 8mm bars spaced at 150 mm centers.",
+                "hint": "8mm bars at 15cm spacing."
+            },
+            {
+                "q": "Clear cover to slab reinforcement is:",
+                "options": [
+                    "15 mm",
+                    "20 mm",
+                    "25 mm",
+                    "30 mm"
+                ],
+                "correct": 1,
+                "rationale": "Slabs require a clear cover of 20 mm.",
+                "hint": "20 mm."
+            },
+            {
+                "q": "Staircase waist slab thickness is:",
+                "options": [
+                    "125 mm",
+                    "150 mm",
+                    "200 mm",
+                    "250 mm"
+                ],
+                "correct": 1,
+                "rationale": "Staircase slabs need to be thicker than floor slabs, specified here as 150 mm.",
+                "hint": "15 cm."
+            },
+            {
+                "q": "Longitudinal bars in waist slab are:",
+                "options": [
+                    "8Ø",
+                    "10Ø",
+                    "12Ø",
+                    "16Ø"
+                ],
+                "correct": 2,
+                "rationale": "Main bars in the staircase waist slab are 12 mm in diameter.",
+                "hint": "12mm bars."
+            },
+            {
+                "q": "Horizontal RC bands in walls are provided at what heights?",
+                "options": [
+                    "Top and bottom of wall",
+                    "One-third and two-thirds height",
+                    "Mid-height only",
+                    "Lintel and sill level"
+                ],
+                "correct": 1,
+                "rationale": "For seismic safety in masonry walls, horizontal bands are placed at 1/3 and 2/3 of the wall height.",
+                "hint": "Two bands dividing the wall into three parts."
+            },
+            {
+                "q": "Band width is equal to:",
+                "options": [
+                    "Wall thickness",
+                    "100 mm",
+                    "150 mm",
+                    "200 mm"
+                ],
+                "correct": 0,
+                "rationale": "The width of the horizontal band matches the thickness of the wall it supports.",
+                "hint": "It fits the wall exactly."
+            },
+            {
+                "q": "Longitudinal reinforcement in band is:",
+                "options": [
+                    "2 bars of 8 mm",
+                    "2 bars of 10 mm",
+                    "4 bars of 10 mm",
+                    "4 bars of 12 mm"
+                ],
+                "correct": 1,
+                "rationale": "Bands are reinforced with 2 bars of 10 mm diameter.",
+                "hint": "Two 10mm bars."
+            },
+            {
+                "q": "Transverse links in band are spaced at:",
+                "options": [
+                    "100 mm c/c",
+                    "150 mm c/c",
+                    "200 mm c/c",
+                    "250 mm c/c"
+                ],
+                "correct": 1,
+                "rationale": "The links (stirrups) in the band are spaced at 150 mm.",
+                "hint": "15 cm."
+            },
+            {
+                "q": "For walls with openings, bands are provided at:",
+                "options": [
+                    "Lintel and sill level",
+                    "Mid-height only",
+                    "Top of opening only",
+                    "Not required"
+                ],
+                "correct": 0,
+                "rationale": "When openings exist, bands are shifted to the Lintel and Sill levels to integrate with the opening structure.",
+                "hint": "Top and bottom of the window/door."
+            },
+            {
+                "q": "Maximum height of parapet allowed is:",
+                "options": [
+                    "0.75 m",
+                    "1.0 m",
+                    "1.2 m",
+                    "1.5 m"
+                ],
+                "correct": 1,
+                "rationale": "Parapet walls are limited to 1.0 meter in height for safety and stability.",
+                "hint": "One meter."
+            },
+            {
+                "q": "Vertical RC posts in parapet are spaced at:",
+                "options": [
+                    "1.0 m",
+                    "1.5 m",
+                    "2.0 m",
+                    "2.5 m"
+                ],
+                "correct": 1,
+                "rationale": "Vertical stiffening posts in parapets should be spaced every 1.5 meters.",
+                "hint": "1.5 meters."
+            },
+            {
+                "q": "Vertical reinforcement in parapet post is:",
+                "options": [
+                    "2 bars of 8 mm",
+                    "2 bars of 10 mm",
+                    "4 bars of 8 mm",
+                    "4 bars of 10 mm"
+                ],
+                "correct": 0,
+                "rationale": "Parapet posts are lightly reinforced with 2 bars of 8 mm.",
+                "hint": "Two 8mm bars."
+            },
+            {
+                "q": "Transverse links in parapet post are spaced at:",
+                "options": [
+                    "100 mm c/c",
+                    "150 mm c/c",
+                    "200 mm c/c",
+                    "250 mm c/c"
+                ],
+                "correct": 1,
+                "rationale": "Links in the parapet post are spaced at 150 mm.",
+                "hint": "15 cm."
+            },
+            {
+                "q": "Flower pots on parapets must be:",
+                "options": [
+                    "Avoided",
+                    "Lightweight",
+                    "Wired and anchored",
+                    "Placed only at corners"
+                ],
+                "correct": 2,
+                "rationale": "To prevent falling hazards during earthquakes, flower pots must be securely wired and anchored.",
+                "hint": "Secured mechanically."
+            },
+            {
+                "q": "Seismic zone factor for Kathmandu is:",
+                "options": [
+                    "0.25",
+                    "0.3",
+                    "0.35",
+                    "0.4"
+                ],
+                "correct": 2,
+                "rationale": "Kathmandu falls into the 0.35 seismic zone factor (PGA).",
+                "hint": "0.35."
+            },
+            {
+                "q": "Which municipality has site subsoil category D?",
+                "options": [
+                    "Pokhara",
+                    "Lalitpur",
+                    "Birgunj",
+                    "Dharan"
+                ],
+                "correct": 1,
+                "rationale": "Lalitpur, like Kathmandu, is in the valley with deep soft soil, classified as Category D.",
+                "hint": "Neighbor to Kathmandu."
+            },
+            {
+                "q": "Seismic zone factor for Taplejung (Phaktanglung) is:",
+                "options": [
+                    "0.25",
+                    "0.3",
+                    "0.35",
+                    "0.4"
+                ],
+                "correct": 0,
+                "rationale": "Taplejung is in a lower seismic zone with a factor of 0.25.",
+                "hint": "0.25."
+            },
+            {
+                "q": "For municipalities not listed in Table 6-1, site type is assumed as:",
+                "options": [
+                    "Type A",
+                    "Type B",
+                    "Type C",
+                    "Type D"
+                ],
+                "correct": 2,
+                "rationale": "If site data is unavailable, a conservative assumption of Site Type C is made.",
+                "hint": "Type C."
+            },
+            {
+                "q": "Seismic zoning factor is denoted by:",
+                "options": [
+                    "Z",
+                    "I",
+                    "R",
+                    "C"
+                ],
+                "correct": 0,
+                "rationale": "The seismic zone factor is conventionally denoted by 'Z'.",
+                "hint": "Z for Zone."
+            },
+            {
+                "q": "Importance factor (I) for ordinary residential buildings is:",
+                "options": [
+                    "1.0",
+                    "1.2",
+                    "1.5",
+                    "1.75"
+                ],
+                "correct": 0,
+                "rationale": "Ordinary residential buildings have an Importance Factor of 1.0.",
+                "hint": "Standard importance."
+            },
+            {
+                "q": "The exponent k in vertical force distribution for T ≥ 2.5 sec is:",
+                "options": [
+                    "1",
+                    "1.5",
+                    "2",
+                    "2.5"
+                ],
+                "correct": 2,
+                "rationale": "For long period structures (T ≥ 2.5s), the distribution exponent k is 2.",
+                "hint": "k = 2."
+            },
+            {
+                "q": "Elastic site spectra for ultimate limit state is given by:",
+                "options": [
+                    "C(T) = Ch(T)ZI",
+                    "Cs(T) = 0.2C(T)",
+                    "Cd(T) = C(T)/R",
+                    "Ch(T) = ZI"
+                ],
+                "correct": 0,
+                "rationale": "The elastic site spectra C(T) is calculated as Ch(T) * Z * I.",
+                "hint": "It combines Shape, Zone, and Importance."
+            },
+            {
+                "q": "Serviceability limit state spectra is what fraction of ultimate limit state spectra?",
+                "options": [
+                    "0.1",
+                    "0.2",
+                    "0.3",
+                    "0.4"
+                ],
+                "correct": 1,
+                "rationale": "The serviceability spectra is taken as 0.2 times the ultimate spectra.",
+                "hint": "20%."
+            },
+            {
+                "q": "Design load combinations shall be as per:",
+                "options": [
+                    "NBC 105:2020",
+                    "IS 456:2000",
+                    "SP 34",
+                    "IS 875"
+                ],
+                "correct": 0,
+                "rationale": "Load combinations must follow the specific seismic code NBC 105:2020.",
+                "hint": "The seismic code."
+            },
+            {
+                "q": "Coarse aggregate size for concrete thickness ≥ 100 mm is:",
+                "options": [
+                    "10 mm down",
+                    "12 mm down",
+                    "20 mm down",
+                    "40 mm down"
+                ],
+                "correct": 2,
+                "rationale": "For sections 100mm or thicker, 20 mm down aggregate is standard.",
+                "hint": "20 mm."
+            },
+            {
+                "q": "Sand shall be free from undesirable substances exceeding:",
+                "options": [
+                    "2% by weight",
+                    "5% by weight",
+                    "10% by weight",
+                    "15% by weight"
+                ],
+                "correct": 1,
+                "rationale": "Sand must not contain more than 5% deleterious materials by weight.",
+                "hint": "5% limit."
+            },
+            {
+                "q": "Brick tolerance in length is:",
+                "options": [
+                    "±5 mm",
+                    "±10 mm",
+                    "±15 mm",
+                    "±20 mm"
+                ],
+                "correct": 1,
+                "rationale": "Bricks can vary in length by ±10 mm.",
+                "hint": "Plus or minus 10mm."
+            },
+            {
+                "q": "Minimum plaster strength at 28 days is:",
+                "options": [
+                    "2 N/mm²",
+                    "3 N/mm²",
+                    "4 N/mm²",
+                    "5 N/mm²"
+                ],
+                "correct": 1,
+                "rationale": "Plaster should attain a strength of at least 3 N/mm².",
+                "hint": "3 N/mm²."
+            },
+            {
+                "q": "Reinforcement bars shall be free from:",
+                "options": [
+                    "Mill scale and rust",
+                    "Oil and grease",
+                    "Paint coatings",
+                    "All of the above"
+                ],
+                "correct": 3,
+                "rationale": "Rebar must be clean of all contaminants like oil, grease, rust, or paint to ensure bond.",
+                "hint": "All of these prevent bonding."
+            },
+            {
+                "q": "Formwork for slab and beam can be removed after:",
+                "options": [
+                    "1 week",
+                    "2 weeks",
+                    "3 weeks",
+                    "4 weeks"
+                ],
+                "correct": 2,
+                "rationale": "Props and formwork for main spans should remain for 3 weeks (21 days) to gain sufficient strength.",
+                "hint": "21 days."
+            },
+            {
+                "q": "Cement stored for more than ______ should be tested before use.",
+                "options": [
+                    "1 month",
+                    "2 months",
+                    "3 months",
+                    "6 months"
+                ],
+                "correct": 1,
+                "rationale": "Cement loses strength over time; if stored over 2 months, it requires re-testing.",
+                "hint": "2 months."
+            },
+            {
+                "q": "Bricks should be:",
+                "options": [
+                    "Dry when laying",
+                    "Pre-soaked in water",
+                    "Coated with cement slurry",
+                    "Burned on site"
+                ],
+                "correct": 1,
+                "rationale": "Bricks must be pre-soaked to prevent them from absorbing water from the mortar.",
+                "hint": "Soaked."
+            },
+            {
+                "q": "Concrete mix for M20 is:",
+                "options": [
+                    "1:1:2",
+                    "1:1.5:3",
+                    "1:2:4",
+                    "1:3:6"
+                ],
+                "correct": 1,
+                "rationale": "The nominal mix ratio for M20 concrete is 1:1.5:3 (Cement:Sand:Aggregate).",
+                "hint": "1 : 1.5 : 3."
+            },
+            {
+                "q": "Addition of lime in mortar is encouraged up to:",
+                "options": [
+                    "¼ to ½ of cement",
+                    "Equal to cement",
+                    "Twice cement",
+                    "Not allowed"
+                ],
+                "correct": 0,
+                "rationale": "Adding a small amount of lime (1/4 to 1/2 of cement volume) improves workability.",
+                "hint": "A fraction of the cement."
+            },
+            {
+                "q": "For two-storey building in seismic zone 0.25, what is the reinforcement in plinth beam?",
+                "options": [
+                    "3-12Ø top and bottom",
+                    "4-12Ø top and bottom",
+                    "3-16Ø top and bottom",
+                    "4-16Ø top and bottom"
+                ],
+                "correct": 0,
+                "rationale": "In low seismic zones (0.25), 3 bars of 12mm diameter top and bottom are sufficient for plinth beams.",
+                "hint": "3 bars of 12mm."
+            },
+            {
+                "q": "In two-storey building, the stirrups in plinth beam are:",
+                "options": [
+                    "2-legged 8Ø @ 100/150 mm c/c",
+                    "3-legged 8Ø @ 100/150 mm c/c",
+                    "2-legged 10Ø @ 100/150 mm c/c",
+                    "3-legged 10Ø @ 100/150 mm c/c"
+                ],
+                "correct": 0,
+                "rationale": "Stirrups are 2-legged 8mm bars with variable spacing (100mm at ends, 150mm mid-span).",
+                "hint": "2-legged 8mm."
+            },
+            {
+                "q": "For two-storey building, the development length for 12 mm bar in M20 concrete is:",
+                "options": [
+                    "570 mm",
+                    "690 mm",
+                    "920 mm",
+                    "1150 mm"
+                ],
+                "correct": 1,
+                "rationale": "Development length calculation yields approx 690 mm for 12mm bar.",
+                "hint": "690 mm."
+            },
+            {
+                "q": "In two-storey building, the zone for bottom bar lapping in beam is:",
+                "options": [
+                    "Middle 1/3 of span",
+                    "Near supports",
+                    "At quarter points",
+                    "No restriction"
+                ],
+                "correct": 0,
+                "rationale": "Bottom bars should be lapped in the middle third of the span where tension is lower under seismic reversal.",
+                "hint": "Middle third."
+            },
+            {
+                "q": "For two-storey building, the transverse reinforcement in column at splicing zone is:",
+                "options": [
+                    "8Ø @ 75 mm c/c",
+                    "8Ø @ 100 mm c/c",
+                    "8Ø @ 125 mm c/c",
+                    "8Ø @ 150 mm c/c"
+                ],
+                "correct": 0,
+                "rationale": "Splicing zones require tight confinement with 8mm stirrups at 75mm spacing.",
+                "hint": "75 mm spacing."
+            },
+            {
+                "q": "For three-storey building in seismic zone 0.3, what is the beam size for first floor?",
+                "options": [
+                    "250 mm x 355 mm",
+                    "250 mm x 380 mm",
+                    "300 mm x 380 mm",
+                    "300 mm x 400 mm"
+                ],
+                "correct": 1,
+                "rationale": "For zone 0.3, beam size increases to 250x380 mm for the first floor.",
+                "hint": "250 by 380."
+            },
+            {
+                "q": "In three-storey building, for seismic zone 0.35, the top extra bars in first floor beam 1 are:",
+                "options": [
+                    "2-12Ø",
+                    "3-12Ø",
+                    "4-12Ø",
+                    "Not provided"
+                ],
+                "correct": 1,
+                "rationale": "Reinforcement tables specify 3-12mm extra top bars for this specific condition.",
+                "hint": "3 bars."
+            },
+            {
+                "q": "The stirrups in three-storey building for first floor beam of size 300x380 mm are:",
+                "options": [
+                    "3-legged 8Ø @ 100/150 mm c/c",
+                    "4-legged 8Ø @ 100/150 mm c/c",
+                    "3-legged 10Ø @ 100/150 mm c/c",
+                    "4-legged 10Ø @ 100/150 mm c/c"
+                ],
+                "correct": 1,
+                "rationale": "Wide beams (300mm) need 4-legged stirrups.",
+                "hint": "4 legs."
+            },
+            {
+                "q": "In three-storey building, the anchorage length for beam longitudinal bars of depth 380 mm into column is:",
+                "options": [
+                    "300 mm",
+                    "350 mm",
+                    "400 mm",
+                    "450 mm"
+                ],
+                "correct": 0,
+                "rationale": "Anchorage length into the column is specified as 300 mm.",
+                "hint": "300 mm."
+            },
+            {
+                "q": "For three-storey building, the bottom reinforcement in second floor beam for seismic zone 0.4 is:",
+                "options": [
+                    "3-12Ø throughout with no extra bars",
+                    "3-12Ø throughout with 2-12Ø extra bars",
+                    "4-12Ø throughout with no extra bars",
+                    "4-12Ø throughout with 2-12Ø extra bars"
+                ],
+                "correct": 1,
+                "rationale": "High seismic demand requires 3 through bars plus 2 extra bars at the bottom.",
+                "hint": "3 through + 2 extra."
+            },
+            {
+                "q": "Option I for slab reinforcement provides:",
+                "options": [
+                    "Bottom continuous bars and top extra bars at supports",
+                    "Top continuous bars and bottom extra bars at mid-span",
+                    "Both top and bottom continuous bars",
+                    "Only bottom bars"
+                ],
+                "correct": 0,
+                "rationale": "Option I details a system with continuous bottom mesh and separate top extra bars over supports.",
+                "hint": "Bottom continuous, top extra."
+            },
+            {
+                "q": "In Option II, the bottom bars in slab are:",
+                "options": [
+                    "Provided only in middle strip",
+                    "Continuous and bent at supports",
+                    "Discontinuous and lapped at mid-span",
+                    "Not required"
+                ],
+                "correct": 1,
+                "rationale": "Option II uses the 'bent-up bar' method where bottom bars are bent up at supports.",
+                "hint": "Bent up method."
+            },
+            {
+                "q": "The spacing of main reinforcement in slab is:",
+                "options": [
+                    "100 mm c/c",
+                    "125 mm c/c",
+                    "150 mm c/c",
+                    "200 mm c/c"
+                ],
+                "correct": 2,
+                "rationale": "Standard slab main bar spacing is 150 mm.",
+                "hint": "150 mm."
+            },
+            {
+                "q": "Top extra bars in slab are provided at:",
+                "options": [
+                    "Mid-span",
+                    "Supports",
+                    "Corners",
+                    "Around openings"
+                ],
+                "correct": 1,
+                "rationale": "Top extra bars resist negative moment which occurs at the supports.",
+                "hint": "Where the slab meets the beam."
+            },
+            {
+                "q": "The length of top extra bars from support face is:",
+                "options": [
+                    "0.15 L or Ld, whichever is max",
+                    "0.25 L or Ld, whichever is max",
+                    "0.3 L or Ld, whichever is max",
+                    "0.5 L or Ld, whichever is max"
+                ],
+                "correct": 2,
+                "rationale": "Top bars extend 0.3L (or development length Ld) into the span.",
+                "hint": "0.3 L."
+            },
+            {
+                "q": "Staircase is constructed as:",
+                "options": [
+                    "Straight flight",
+                    "Dog-legged",
+                    "Spiral",
+                    "Open well"
+                ],
+                "correct": 1,
+                "rationale": "The standard detailing provided is for a Dog-legged staircase.",
+                "hint": "It turns 180 degrees."
+            },
+            {
+                "q": "Landing beam is supported on:",
+                "options": [
+                    "Columns",
+                    "Walls only",
+                    "Both walls and columns",
+                    "Cantilever from beam"
+                ],
+                "correct": 1,
+                "rationale": "The detailing assumes the landing beam rests on walls (masonry).",
+                "hint": "Walls."
+            },
+            {
+                "q": "Width of staircase flight is:",
+                "options": [
+                    "900 mm",
+                    "1050 mm",
+                    "1200 mm",
+                    "1500 mm"
+                ],
+                "correct": 1,
+                "rationale": "The standard flight width in these drawings is 1050 mm.",
+                "hint": "Just over a meter."
+            },
+            {
+                "q": "Longitudinal bars in waist slab are spaced at:",
+                "options": [
+                    "100 mm c/c",
+                    "125 mm c/c",
+                    "150 mm c/c",
+                    "200 mm c/c"
+                ],
+                "correct": 2,
+                "rationale": "Main spacing in the staircase slab is 150 mm.",
+                "hint": "15 cm."
+            },
+            {
+                "q": "For Option I (RCC steps), the steps are reinforced with:",
+                "options": [
+                    "8Ø bars at each step",
+                    "10Ø bars at each step",
+                    "12Ø bars at each step",
+                    "No reinforcement in steps"
+                ],
+                "correct": 0,
+                "rationale": "The steps themselves (if RCC) have 8mm nosing bars.",
+                "hint": "8mm bars."
+            },
+            {
+                "q": "For walls with openings, horizontal bands are provided at:",
+                "options": [
+                    "Lintel and sill level",
+                    "One-third and two-thirds height",
+                    "Every meter",
+                    "Top and bottom of wall"
+                ],
+                "correct": 0,
+                "rationale": "Openings require bands at the Lintel and Sill levels.",
+                "hint": "Lintel and Sill."
+            },
+            {
+                "q": "For opening up to 3 ft, the band reinforcement is:",
+                "options": [
+                    "3 nos. 10Ø bars",
+                    "4 nos. 10Ø bars",
+                    "3 nos. 12Ø bars",
+                    "4 nos. 12Ø bars"
+                ],
+                "correct": 0,
+                "rationale": "Smaller openings (3 ft) need 3 bars of 10mm in the band.",
+                "hint": "3 bars of 10mm."
+            },
+            {
+                "q": "Transverse links in band for opening up to 3 ft are:",
+                "options": [
+                    "8Ø @ 100 mm c/c",
+                    "8Ø @ 150 mm c/c",
+                    "10Ø @ 150 mm c/c",
+                    "10Ø @ 200 mm c/c"
+                ],
+                "correct": 1,
+                "rationale": "Links in these bands are 8mm at 150mm spacing.",
+                "hint": "8mm at 150mm."
+            },
+            {
+                "q": "For opening up to 6 ft, the band reinforcement is:",
+                "options": [
+                    "3 nos. 10Ø bars",
+                    "4 nos. 10Ø bars",
+                    "3 nos. 12Ø bars",
+                    "4 nos. 12Ø bars"
+                ],
+                "correct": 1,
+                "rationale": "Larger openings (6 ft) require 4 bars of 10mm.",
+                "hint": "4 bars."
+            },
+            {
+                "q": "The band thickness is equal to:",
+                "options": [
+                    "Wall thickness",
+                    "75 mm",
+                    "100 mm",
+                    "The larger of masonry unit thickness or 75 mm"
+                ],
+                "correct": 3,
+                "rationale": "Band thickness should match the masonry unit or be at least 75mm.",
+                "hint": "Match masonry or 75mm."
+            },
+            {
+                "q": "Maximum height of parapet is:",
+                "options": [
+                    "0.75 m",
+                    "1.0 m",
+                    "1.2 m",
+                    "1.5 m"
+                ],
+                "correct": 1,
+                "rationale": "Parapet height is limited to 1.0 m.",
+                "hint": "1 meter."
+            },
+            {
+                "q": "Vertical RC posts in parapet are spaced at:",
+                "options": [
+                    "1.0 m",
+                    "1.5 m",
+                    "2.0 m",
+                    "2.5 m"
+                ],
+                "correct": 1,
+                "rationale": "Parapet posts are spaced at 1.5 m.",
+                "hint": "1.5 m."
+            },
+            {
+                "q": "Vertical reinforcement in parapet post is:",
+                "options": [
+                    "2 bars of 8 mm",
+                    "2 bars of 10 mm",
+                    "4 bars of 8 mm",
+                    "4 bars of 10 mm"
+                ],
+                "correct": 0,
+                "rationale": "Reinforcement is 2 bars of 8mm.",
+                "hint": "Two 8mm bars."
+            },
+            {
+                "q": "Transverse links in parapet post are:",
+                "options": [
+                    "4.75 mm Ø @ 150 mm c/c",
+                    "6 mm Ø @ 150 mm c/c",
+                    "8 mm Ø @ 150 mm c/c",
+                    "10 mm Ø @ 150 mm c/c"
+                ],
+                "correct": 0,
+                "rationale": "Light wire links (4.75 mm) are used for parapet posts.",
+                "hint": "4.75 mm."
+            },
+            {
+                "q": "The vertical reinforcement in parapet post must be embedded in the slab/beam below by at least:",
+                "options": [
+                    "200 mm",
+                    "300 mm",
+                    "400 mm",
+                    "500 mm"
+                ],
+                "correct": 1,
+                "rationale": "Embedment depth for parapet posts is 300 mm.",
+                "hint": "300 mm."
+            },
+            {
+                "q": "Site subsoil category D is applicable to:",
+                "options": [
+                    "Kathmandu, Lalitpur, Bhaktapur, Madhyapur Thimi, Kageshwori Manahara, Tokha",
+                    "Only Kathmandu",
+                    "All municipal areas",
+                    "Hilly regions only"
+                ],
+                "correct": 0,
+                "rationale": "Category D applies to the specific list of Kathmandu Valley municipalities.",
+                "hint": "The valley municipalities."
+            },
+            {
+                "q": "Seismic zone factor for Birgunj is:",
+                "options": [
+                    "0.25",
+                    "0.3",
+                    "0.35",
+                    "0.4"
+                ],
+                "correct": 2,
+                "rationale": "Birgunj is in a 0.35 zone.",
+                "hint": "0.35."
+            },
+            {
+                "q": "Seismic zone factor for Pokhara is:",
+                "options": [
+                    "0.25",
+                    "0.3",
+                    "0.35",
+                    "0.4"
+                ],
+                "correct": 2,
+                "rationale": "Pokhara is also in a 0.35 zone.",
+                "hint": "0.35."
+            },
+            {
+                "q": "For site category C, the spectral shape factor depends on:",
+                "options": [
+                    "Only time period",
+                    "Time period and site type",
+                    "Only site type",
+                    "Building height"
+                ],
+                "correct": 1,
+                "rationale": "Spectral shape factor is a function of both Period (T) and Site Type.",
+                "hint": "Period and Site."
+            },
+            {
+                "q": "The seismic zoning map is provided in:",
+                "options": [
+                    "Annex",
+                    "Section 1",
+                    "Section 6",
+                    "Section 9"
+                ],
+                "correct": 0,
+                "rationale": "Zoning maps are typically found in the Annex.",
+                "hint": "Annex."
+            },
+            {
+                "q": "Dead load includes:",
+                "options": [
+                    "Weight of permanent components",
+                    "Weight of movable partitions",
+                    "Snow load",
+                    "Wind load"
+                ],
+                "correct": 0,
+                "rationale": "Dead load defines permanent weights like structure and fixed finishes.",
+                "hint": "Permanent."
+            },
+            {
+                "q": "Live load for residential buildings is as per:",
+                "options": [
+                    "IS 875 (Part I)",
+                    "IS 875 (Part II)",
+                    "IS 456",
+                    "NBC 105"
+                ],
+                "correct": 1,
+                "rationale": "Live loads are specified in IS 875 Part II.",
+                "hint": "Part II."
+            },
+            {
+                "q": "The load combination for earthquake load is as per:",
+                "options": [
+                    "NBC 105:2020",
+                    "IS 456:2000",
+                    "SP 34",
+                    "IS 875"
+                ],
+                "correct": 0,
+                "rationale": "Seismic load combinations come from NBC 105:2020.",
+                "hint": "NBC 105."
+            },
+            {
+                "q": "Importance factor for ordinary residential building is:",
+                "options": [
+                    "1.0",
+                    "1.2",
+                    "1.5",
+                    "1.75"
+                ],
+                "correct": 0,
+                "rationale": "Ordinary buildings have I=1.0.",
+                "hint": "1.0."
+            },
+            {
+                "q": "The design base shear is distributed along height using:",
+                "options": [
+                    "Triangular distribution",
+                    "Parabolic distribution",
+                    "Uniform distribution",
+                    "According to formula involving seismic weight and height"
+                ],
+                "correct": 3,
+                "rationale": "Vertical distribution follows a formula based on weight and height (Wi * hi^k).",
+                "hint": "Weight and height formula."
+            },
+            {
+                "q": "Minimum concrete grade for all structural elements is:",
+                "options": [
+                    "M15",
+                    "M20",
+                    "M25",
+                    "M30"
+                ],
+                "correct": 1,
+                "rationale": "M20 is the minimum structural grade.",
+                "hint": "M20."
+            },
+            {
+                "q": "Maximum size of coarse aggregate for concrete thickness 40 mm to 100 mm is:",
+                "options": [
+                    "10 mm",
+                    "12 mm",
+                    "20 mm",
+                    "40 mm"
+                ],
+                "correct": 1,
+                "rationale": "Thinner sections (40-100mm) require smaller aggregate (12mm).",
+                "hint": "12mm."
+            },
+            {
+                "q": "Sand shall consist of:",
+                "options": [
+                    "Siliceous material",
+                    "Calcareous material",
+                    "Clayey material",
+                    "Organic material"
+                ],
+                "correct": 0,
+                "rationale": "Sand should be siliceous.",
+                "hint": "Silica."
+            },
+            {
+                "q": "Bricks should be well burnt and of crushing strength not less than:",
+                "options": [
+                    "3.5 N/mm²",
+                    "5 N/mm²",
+                    "7.5 N/mm²",
+                    "10 N/mm²"
+                ],
+                "correct": 0,
+                "rationale": "Minimum brick strength is 3.5 N/mm².",
+                "hint": "3.5."
+            },
+            {
+                "q": "Reinforcing bars shall be:",
+                "options": [
+                    "Fe 500",
+                    "Fe 415",
+                    "Fe 250",
+                    "Fe 550"
+                ],
+                "correct": 0,
+                "rationale": "Fe 500 is the standard rebar grade.",
+                "hint": "Fe 500."
+            },
+            {
+                "q": "Clear cover to reinforcement in footing bottom face is:",
+                "options": [
+                    "50 mm",
+                    "75 mm",
+                    "100 mm",
+                    "150 mm"
+                ],
+                "correct": 0,
+                "rationale": "Footings require 50 mm cover at the bottom (against blinding/soil).",
+                "hint": "50 mm."
+            },
+            {
+                "q": "Clear cover to reinforcement in footing side face is:",
+                "options": [
+                    "50 mm",
+                    "75 mm",
+                    "100 mm",
+                    "150 mm"
+                ],
+                "correct": 1,
+                "rationale": "Side cover for footings is 75 mm.",
+                "hint": "75 mm."
+            },
+            {
+                "q": "In column, the clear cover to stirrups is:",
+                "options": [
+                    "25 mm",
+                    "40 mm",
+                    "50 mm",
+                    "75 mm"
+                ],
+                "correct": 1,
+                "rationale": "Column cover is 40 mm.",
+                "hint": "40 mm."
+            },
+            {
+                "q": "In beam, the clear cover to stirrups is:",
+                "options": [
+                    "25 mm",
+                    "40 mm",
+                    "50 mm",
+                    "75 mm"
+                ],
+                "correct": 0,
+                "rationale": "Beam cover is 25 mm.",
+                "hint": "25 mm."
+            },
+            {
+                "q": "In slab, the clear cover to reinforcement is:",
+                "options": [
+                    "15 mm",
+                    "20 mm",
+                    "25 mm",
+                    "30 mm"
+                ],
+                "correct": 1,
+                "rationale": "Slab cover is 20 mm.",
+                "hint": "20 mm."
+            },
+            {
+                "q": "For two-storey building with SBC=150 kN/m², the footing size for face column is:",
+                "options": [
+                    "1.5 m x 1.5 m",
+                    "1.6 m x 1.6 m",
+                    "1.85 m x 1.85 m",
+                    "2.3 m x 2.3 m"
+                ],
+                "correct": 0,
+                "rationale": "Face columns in 2-storey buildings with medium soil need 1.5m footings.",
+                "hint": "1.5 m."
+            },
+            {
+                "q": "For three-storey building with SBC=200 kN/m², the footing size for staircase column is:",
+                "options": [
+                    "1.6 m x 1.6 m",
+                    "1.9 m x 1.9 m",
+                    "2.25 m x 2.25 m",
+                    "2.8 m x 2.8 m"
+                ],
+                "correct": 1,
+                "rationale": "Staircase columns (3-storey, good soil) need 1.9m footings.",
+                "hint": "1.9 m."
+            },
+            {
+                "q": "The thickness of isolated footing for three-storey building is:",
+                "options": [
+                    "350 mm",
+                    "400 mm",
+                    "450 mm",
+                    "500 mm"
+                ],
+                "correct": 1,
+                "rationale": "Thickness is 400 mm.",
+                "hint": "400 mm."
+            },
+            {
+                "q": "Reinforcement in isolated footing is provided in:",
+                "options": [
+                    "One direction only",
+                    "Both directions",
+                    "Only at bottom",
+                    "Only at top"
+                ],
+                "correct": 1,
+                "rationale": "Reinforcement is provided in both directions.",
+                "hint": "Both ways."
+            },
+            {
+                "q": "For eccentric footing, the strap beam size is:",
+                "options": [
+                    "400 mm x 450 mm",
+                    "450 mm x 500 mm",
+                    "500 mm x 550 mm",
+                    "600 mm x 600 mm"
+                ],
+                "correct": 0,
+                "rationale": "Strap beam size is 400x450 mm.",
+                "hint": "400x450."
+            },
+            {
+                "q": "In two-storey building, the column size is generally:",
+                "options": [
+                    "300 mm x 300 mm",
+                    "350 mm x 350 mm",
+                    "400 mm x 400 mm",
+                    "450 mm x 450 mm"
+                ],
+                "correct": 1,
+                "rationale": "General column size is 350x350 mm.",
+                "hint": "350 mm."
+            },
+            {
+                "q": "In three-storey building, the column size for staircase column in ground floor may be:",
+                "options": [
+                    "350 mm x 350 mm",
+                    "400 mm x 400 mm",
+                    "450 mm x 450 mm",
+                    "500 mm x 500 mm"
+                ],
+                "correct": 1,
+                "rationale": "Staircase columns may be 400x400 mm.",
+                "hint": "400 mm."
+            },
+            {
+                "q": "The special confinement zone in column is at:",
+                "options": [
+                    "Mid-height of column",
+                    "Bottom of column only",
+                    "Top and bottom of column for a distance H/4",
+                    "Throughout the column"
+                ],
+                "correct": 2,
+                "rationale": "Confinement zones are the top and bottom quarters (H/4).",
+                "hint": "Top and bottom quarters."
+            },
+            {
+                "q": "Transverse reinforcement in column splicing zone is spaced at:",
+                "options": [
+                    "75 mm c/c",
+                    "100 mm c/c",
+                    "125 mm c/c",
+                    "150 mm c/c"
+                ],
+                "correct": 0,
+                "rationale": "Spacing is 75 mm.",
+                "hint": "75 mm."
+            },
+            {
+                "q": "Longitudinal bars in column are spliced in:",
+                "options": [
+                    "Middle half of column height",
+                    "Bottom quarter",
+                    "Top quarter",
+                    "Anywhere"
+                ],
+                "correct": 0,
+                "rationale": "Splicing should occur in the middle half (center) of the column.",
+                "hint": "Middle."
+            },
+            {
+                "q": "Plinth beam size is:",
+                "options": [
+                    "250 mm x 355 mm",
+                    "300 mm x 450 mm",
+                    "350 mm x 350 mm",
+                    "400 mm x 400 mm"
+                ],
+                "correct": 0,
+                "rationale": "Plinth beam is 250x355 mm.",
+                "hint": "250x355."
+            },
+            {
+                "q": "Floor beam depth for first floor in three-storey building may be:",
+                "options": [
+                    "355 mm",
+                    "380 mm",
+                    "400 mm",
+                    "450 mm"
+                ],
+                "correct": 1,
+                "rationale": "Depth increases to 380 mm.",
+                "hint": "380 mm."
+            },
+            {
+                "q": "Stirrups in beam end zone are spaced at:",
+                "options": [
+                    "100 mm c/c",
+                    "150 mm c/c",
+                    "200 mm c/c",
+                    "250 mm c/c"
+                ],
+                "correct": 0,
+                "rationale": "End zone spacing is 100 mm.",
+                "hint": "100 mm."
+            },
+            {
+                "q": "Extra bars in beam are curtailed at:",
+                "options": [
+                    "0.1 L from support",
+                    "0.2 L from support",
+                    "0.3 L from support",
+                    "0.4 L from support"
+                ],
+                "correct": 2,
+                "rationale": "Curtailment is at 0.3L.",
+                "hint": "0.3 L."
+            },
+            {
+                "q": "Anchorage length of beam bars into column is:",
+                "options": [
+                    "300 mm for 355 mm deep beam",
+                    "400 mm for 355 mm deep beam",
+                    "300 mm for 380 mm deep beam",
+                    "Both a and c"
+                ],
+                "correct": 3,
+                "rationale": "Anchorage is 300 mm for both cases mentioned.",
+                "hint": "300 mm."
+            },
+            {
+                "q": "Slab thickness is:",
+                "options": [
+                    "100 mm",
+                    "125 mm",
+                    "150 mm",
+                    "200 mm"
+                ],
+                "correct": 1,
+                "rationale": "Slab thickness is 125 mm.",
+                "hint": "125 mm."
+            },
+            {
+                "q": "Main reinforcement in slab is of diameter:",
+                "options": [
+                    "8 mm",
+                    "10 mm",
+                    "12 mm",
+                    "16 mm"
+                ],
+                "correct": 0,
+                "rationale": "Main slab bars are 8mm.",
+                "hint": "8mm."
+            },
+            {
+                "q": "Staircase waist slab thickness is:",
+                "options": [
+                    "125 mm",
+                    "150 mm",
+                    "200 mm",
+                    "250 mm"
+                ],
+                "correct": 1,
+                "rationale": "Waist slab is 150 mm.",
+                "hint": "150 mm."
+            },
+            {
+                "q": "Longitudinal bars in waist slab are of diameter:",
+                "options": [
+                    "8 mm",
+                    "10 mm",
+                    "12 mm",
+                    "16 mm"
+                ],
+                "correct": 2,
+                "rationale": "Waist slab main bars are 12mm.",
+                "hint": "12mm."
+            },
+            {
+                "q": "Distribution bars in waist slab are of diameter:",
+                "options": [
+                    "8 mm",
+                    "10 mm",
+                    "12 mm",
+                    "16 mm"
+                ],
+                "correct": 0,
+                "rationale": "Distribution bars are 8mm.",
+                "hint": "8mm."
+            },
+            {
+                "q": "Horizontal bands in solid walls are provided at:",
+                "options": [
+                    "One-third and two-thirds height",
+                    "Lintel and sill level",
+                    "Every meter",
+                    "Top and bottom"
+                ],
+                "correct": 0,
+                "rationale": "For solid walls (no openings), bands are at 1/3 and 2/3 height.",
+                "hint": "Thirds."
+            },
+            {
+                "q": "Band thickness is the larger of:",
+                "options": [
+                    "Wall thickness or 75 mm",
+                    "100 mm or 75 mm",
+                    "150 mm or 75 mm",
+                    "200 mm or 75 mm"
+                ],
+                "correct": 0,
+                "rationale": "Band thickness = Wall thickness or min 75mm.",
+                "hint": "Wall thickness."
+            },
+            {
+                "q": "Parapet height should not exceed:",
+                "options": [
+                    "0.75 m",
+                    "1.0 m",
+                    "1.2 m",
+                    "1.5 m"
+                ],
+                "correct": 1,
+                "rationale": "Max parapet height is 1.0 m.",
+                "hint": "1 meter."
+            },
+            {
+                "q": "Vertical posts in parapet are spaced at:",
+                "options": [
+                    "1.0 m",
+                    "1.5 m",
+                    "2.0 m",
+                    "2.5 m"
+                ],
+                "correct": 1,
+                "rationale": "Spacing is 1.5 m.",
+                "hint": "1.5 m."
+            },
+            {
+                "q": "Flower pots on parapets should be:",
+                "options": [
+                    "Avoided",
+                    "Lightweight",
+                    "Wired and anchored",
+                    "Placed only at corners"
+                ],
+                "correct": 2,
+                "rationale": "Flower pots must be wired/anchored.",
+                "hint": "Anchored."
+            },
+            {
+                "q": "Compliance with this code does NOT confer immunity from:",
+                "options": [
+                    "Relevant legal requirements",
+                    "Professional ethics",
+                    "Municipal approval",
+                    "All of the above"
+                ],
+                "correct": 0,
+                "rationale": "Code compliance does not exempt one from other legal requirements.",
+                "hint": "Legal requirements."
+            },
+            {
+                "q": "The code was published in Nepal Gazette on:",
+                "options": [
+                    "2081/02/28",
+                    "2081/1/30",
+                    "2080/11/30",
+                    "2081/01/01"
+                ],
+                "correct": 0,
+                "rationale": "Gazette publication date is 2081/02/28.",
+                "hint": "Month 2, Day 28."
+            },
+            {
+                "q": "The committee that approved the code was chaired by:",
+                "options": [
+                    "Secretary, Ministry of Urban Development",
+                    "Director General, DUDBC",
+                    "Representative, National Planning Commission",
+                    "Representative, Nepal Bureau of Standards"
+                ],
+                "correct": 0,
+                "rationale": "The Secretary of MoUD chaired the committee.",
+                "hint": "Secretary."
+            },
+            {
+                "q": "This code is mandatory for buildings under:",
+                "options": [
+                    "Category C",
+                    "Category B",
+                    "Category A",
+                    "All categories"
+                ],
+                "correct": 0,
+                "rationale": "It is mandatory for Category C.",
+                "hint": "Category C."
+            },
+            {
+                "q": "The code is based on seismic design code:",
+                "options": [
+                    "NBC 105:1994",
+                    "NBC 105:2020",
+                    "IS 1893",
+                    "Eurocode 8"
+                ],
+                "correct": 1,
+                "rationale": "Based on NBC 105:2020.",
+                "hint": "NBC 105."
+            },
+            {
+                "q": "The structure is designed as:",
+                "options": [
+                    "Bare frame without contribution of masonry infill",
+                    "With masonry infill",
+                    "With shear walls",
+                    "With bracing"
+                ],
+                "correct": 0,
+                "rationale": "Designed as a bare frame.",
+                "hint": "Bare frame."
+            },
+            {
+                "q": "The design philosophy includes:",
+                "options": [
+                    "Strong column weak beam",
+                    "Strong beam weak column",
+                    "Equal strength",
+                    "No specific philosophy"
+                ],
+                "correct": 0,
+                "rationale": "Strong column - weak beam is the seismic design philosophy.",
+                "hint": "Strong column."
+            },
+            {
+                "q": "Ductile detailing is as per:",
+                "options": [
+                    "NBC 105:2020",
+                    "IS 456:2000",
+                    "SP 34",
+                    "All of the above"
+                ],
+                "correct": 0,
+                "rationale": "Detailing follows NBC 105:2020.",
+                "hint": "NBC 105."
+            },
+            {
+                "q": "The inter-storey drift limit at serviceability limit state is:",
+                "options": [
+                    "0.006",
+                    "0.010",
+                    "0.015",
+                    "0.025"
+                ],
+                "correct": 0,
+                "rationale": "Serviceability drift limit is 0.006.",
+                "hint": "0.006."
+            },
+            {
+                "q": "The time period used for design is the:",
+                "options": [
+                    "Lesser of Rayleigh method and empirical method",
+                    "Greater of Rayleigh method and empirical method",
+                    "Only Rayleigh method",
+                    "Only empirical method"
+                ],
+                "correct": 0,
+                "rationale": "The lesser of the two methods is used for conservative design forces.",
+                "hint": "Lesser."
+            },
+            {
+                "q": "Cement stored for more than two months should be:",
+                "options": [
+                    "Used without testing",
+                    "Tested before use",
+                    "Discarded",
+                    "Used only in non-structural elements"
+                ],
+                "correct": 1,
+                "rationale": "It must be tested before use.",
+                "hint": "Test it."
+            },
+            {
+                "q": "Concrete cubes are tested at:",
+                "options": [
+                    "7 days",
+                    "14 days",
+                    "28 days",
+                    "56 days"
+                ],
+                "correct": 2,
+                "rationale": "Standard strength is measured at 28 days.",
+                "hint": "28 days."
+            },
+            {
+                "q": "Bricks should be tested for:",
+                "options": [
+                    "Compressive strength",
+                    "Water absorption",
+                    "Dimension",
+                    "All of the above"
+                ],
+                "correct": 0,
+                "rationale": "The key structural test is compressive strength.",
+                "hint": "Strength."
+            },
+            {
+                "q": "Reinforcement bars should be tested for:",
+                "options": [
+                    "Yield strength",
+                    "Elongation",
+                    "Bend test",
+                    "All of the above"
+                ],
+                "correct": 3,
+                "rationale": "All these mechanical properties are essential for rebar.",
+                "hint": "All."
+            },
+            {
+                "q": "Sand should be free from deleterious materials up to:",
+                "options": [
+                    "2%",
+                    "5%",
+                    "10%",
+                    "15%"
+                ],
+                "correct": 1,
+                "rationale": "5% limit.",
+                "hint": "5%."
+            },
+            {
+                "q": "The code is intended for use by:",
+                "options": [
+                    "Professional engineers",
+                    "Mid-level technicians",
+                    "Architects",
+                    "Contractors"
+                ],
+                "correct": 1,
+                "rationale": "Target audience is mid-level technicians.",
+                "hint": "Technicians."
+            },
+            {
+                "q": "Formwork removal time for slab and beam is:",
+                "options": [
+                    "1 week",
+                    "2 weeks",
+                    "3 weeks",
+                    "4 weeks"
+                ],
+                "correct": 2,
+                "rationale": "3 weeks.",
+                "hint": "3 weeks."
+            },
+            {
+                "q": "Bricks should be laid with:",
+                "options": [
+                    "Dry bricks",
+                    "Pre-soaked bricks",
+                    "Wet bricks",
+                    "No specific requirement"
+                ],
+                "correct": 1,
+                "rationale": "Pre-soaked.",
+                "hint": "Pre-soaked."
+            },
+            {
+                "q": "Mortar should be mixed in:",
+                "options": [
+                    "Volume batching",
+                    "Weight batching",
+                    "Either a or b",
+                    "None of the above"
+                ],
+                "correct": 2,
+                "rationale": "Either volume or weight batching is acceptable.",
+                "hint": "Either."
+            },
+            {
+                "q": "Concrete should be compacted by:",
+                "options": [
+                    "Vibrator",
+                    "Hand compaction",
+                    "Both a and b",
+                    "None of the above"
+                ],
+                "correct": 2,
+                "rationale": "Both methods are allowed, though vibrators are preferred.",
+                "hint": "Both."
+            },
+            {
+                "q": "The code provides ready-to-use drawings for:",
+                "options": [
+                    "Architectural plans",
+                    "Structural details",
+                    "Electrical layouts",
+                    "Plumbing details"
+                ],
+                "correct": 1,
+                "rationale": "It provides structural details.",
+                "hint": "Structure."
+            },
+            {
+                "q": "The drawings include details for:",
+                "options": [
+                    "Foundation",
+                    "Columns, beams, slab",
+                    "Staircase, walls, parapet",
+                    "All of the above"
+                ],
+                "correct": 3,
+                "rationale": "Includes all structural components.",
+                "hint": "All."
+            },
+            {
+                "q": "The reinforcement details are given for:",
+                "options": [
+                    "Two-storey building",
+                    "Three-storey building",
+                    "Both a and b",
+                    "Only two-storey building"
+                ],
+                "correct": 2,
+                "rationale": "Covers both 2 and 3 storey buildings.",
+                "hint": "Both."
+            },
+            {
+                "q": "The drawings are based on:",
+                "options": [
+                    "Seismic zone and site category",
+                    "Soil bearing capacity",
+                    "Both a and b",
+                    "Only architectural layout"
+                ],
+                "correct": 2,
+                "rationale": "Drawings vary by Seismic Zone/Site and SBC.",
+                "hint": "Zone and Soil."
+            },
+            {
+                "q": "The code is revised based on:",
+                "options": [
+                    "NBC 105:2020",
+                    "Experience from past earthquakes",
+                    "Consultations with experts",
+                    "All of the above"
+                ],
+                "correct": 3,
+                "rationale": "The revision incorporates new codes, past experience, and expert advice.",
+                "hint": "All."
+            }
+
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const startScreen = document.getElementById('start-screen');
+        const quizInterface = document.getElementById('quiz-interface');
+        const endScreen = document.getElementById('end-screen');
+
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtnText = document.getElementById('next-btn-text');
+
+        const hintBox = document.getElementById('hint-box');
+        const hintText = document.getElementById('hint-text');
+        const rationaleBox = document.getElementById('rationale-box');
+        const rationaleTitle = document.getElementById('rationale-title');
+        const rationaleText = document.getElementById('rationale-text');
+        const rationaleIcon = document.getElementById('rationale-icon');
+        const progressBar = document.getElementById('progress-bar');
+        const scoreDisplay = document.getElementById('score');
+        const currentQNum = document.getElementById('current-q-num');
+
+        // Logic functions
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizInterface.classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function calculateScore() {
+            return questions.filter(q => q.userSelected === q.correct).length;
+        }
+
+        function updateScoreDisplay() {
+            score = calculateScore();
+            scoreDisplay.innerText = score;
+        }
+
+        function loadQuestion() {
+            const q = questions[currentQuestion];
+            hintBox.classList.add('hidden');
+            rationaleBox.classList.add('hidden');
+            nextBtn.classList.add('hidden');
+            if (currentQuestion > 0) prevBtn.classList.remove('hidden');
+            else prevBtn.classList.add('hidden');
+
+            questionText.innerText = `${currentQuestion + 1}. ${q.q}`;
+            hintText.innerText = q.hint;
+            currentQNum.innerText = currentQuestion + 1;
+
+            const progress = ((currentQuestion) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            optionsContainer.innerHTML = '';
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-4 rounded-xl border-2 border-slate-100 bg-white hover:bg-slate-50 hover:border-blue-200 transition-all font-medium text-slate-700 option-btn group flex items-center justify-between`;
+                btn.innerHTML = `<span>${opt}</span> <div class="w-6 h-6 rounded-full border-2 border-slate-200 flex items-center justify-center group-hover:border-blue-300"></div>`;
+                btn.onclick = () => checkAnswer(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            if (q.userSelected !== null) {
+                renderFeedback(q);
+                nextBtn.classList.remove('hidden');
+            }
+
+            if (currentQuestion === questions.length - 1) nextBtnText.innerText = "Finish Quiz";
+            else nextBtnText.innerText = "Next";
+        }
+
+        function checkAnswer(selectedIndex, btn) {
+            const q = questions[currentQuestion];
+            if (q.userSelected !== null && q.userSelected !== selectedIndex) return;
+            q.userSelected = selectedIndex;
+            updateScoreDisplay();
+            renderFeedback(q);
+            nextBtn.classList.remove('hidden');
+            if (selectedIndex === q.correct) {
+                scoreDisplay.classList.add('scale-125');
+                setTimeout(() => scoreDisplay.classList.remove('scale-125'), 200);
+            }
+            setTimeout(() => {
+                document.getElementById('main-container').scrollTo({
+                    top: document.getElementById('main-container').scrollHeight,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+
+        function renderFeedback(q) {
+            const buttons = optionsContainer.getElementsByTagName('button');
+            const selectedIndex = q.userSelected;
+            const isCorrect = selectedIndex === q.correct;
+            for (let i = 0; i < buttons.length; i++) {
+                const btn = buttons[i];
+                btn.onclick = null;
+                btn.classList.add('cursor-not-allowed');
+                if (i === q.correct) {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-800 font-bold flex items-center justify-between";
+                    btn.innerHTML = `<span>${q.options[i]}</span> <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+                } else if (i === selectedIndex && !isCorrect) {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 border-red-500 bg-red-50 text-red-800 font-medium flex items-center justify-between";
+                    btn.innerHTML = `<span>${q.options[i]}</span> <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>`;
+                } else {
+                    btn.classList.add('opacity-50');
+                }
+            }
+            showRationale(isCorrect, isCorrect ? "Correct!" : "Incorrect", q.rationale);
+        }
+
+        function showRationale(isCorrect, title, text) {
+            rationaleBox.classList.remove('hidden');
+            rationaleTitle.innerText = title;
+            rationaleText.innerText = text;
+            rationaleTitle.className = isCorrect ? "font-bold text-lg mb-2 text-emerald-700" : "font-bold text-lg mb-2 text-red-700";
+            if (isCorrect) {
+                rationaleIcon.innerHTML = `<div class="bg-emerald-100 p-2 rounded-full"><svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>`;
+            } else {
+                rationaleIcon.innerHTML = `<div class="bg-red-100 p-2 rounded-full"><svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></div>`;
+            }
+        }
+
+        function toggleHint() { hintBox.classList.toggle('hidden'); }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) loadQuestion();
+            else showEndScreen();
+        }
+
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        }
+
+        function showEndScreen() {
+            quizInterface.classList.add('hidden');
+            endScreen.classList.remove('hidden');
+            score = calculateScore();
+            const percentage = Math.round((score / questions.length) * 100);
+            document.getElementById('final-score-percent').innerText = percentage;
+            document.getElementById('final-raw-score').innerText = score;
+            document.getElementById('final-progress').style.width = `${percentage}%`;
+            const msg = document.getElementById('final-message');
+            if (percentage >= 90) msg.innerText = "Outstanding! You are an NBC 205 Expert.";
+            else if (percentage >= 70) msg.innerText = "Great Job! You have a solid understanding.";
+            else if (percentage >= 50) msg.innerText = "Good effort, but review the code details again.";
+            else msg.innerText = "Keep studying! The details are crucial for safety.";
+        }
+
+        function reviewAnswers() {
+            currentQuestion = 0;
+            quizInterface.classList.remove('hidden');
+            endScreen.classList.add('hidden');
+            loadQuestion();
+        }
+
+        // Initialize
+        document.getElementById('total-q-num').innerText = questions.length;
+        document.getElementById('final-total-questions').innerText = questions.length;
+        questions.forEach(q => q.userSelected = null);
+    </script>
+</body>
+
+</html>

@@ -35,7 +35,7 @@
     background: rgba(16, 185, 129, 0.3);
     border-color: #10b981;
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 10px 25px rgba(233, 237, 235, 0.959);
 }
 
 /* Skill Tags */
@@ -88,7 +88,7 @@
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
-    color: #d1d5db;
+    color: #040101;
     font-size: 1.1rem;
 }
 

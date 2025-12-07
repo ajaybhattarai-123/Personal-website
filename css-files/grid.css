@@ -30,29 +30,33 @@
 ================================ */
 
 .skill-category {
-  background: rgba(16, 185, 129, 0.05);
+  /* Changed: Background to White             [ DESIGN AND SOFTWARE ]*/
+  background: white;
   border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(5, 97, 109, 0.626);
   padding: 2rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   height: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid rgba(16, 185, 129, 0.1);
+  /* Changed: Border color to a subtle grey for white background */
+  border: 2px solid #e0e0e0;
   text-align: center;
 }
 
 .skill-category:hover {
   transform: translateY(-5px);
-  border-color: #2f10b9;
-  box-shadow: 0 15px 35px rgba(26, 88, 231, 0.2);
-  background: rgba(16, 38, 185, 0.1);
+  /* Changed: Hover border and shadow to Blue */
+  border-color: #3b82f6;
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+  background: #f0f8ff; /* Subtle blue tint on hover */
 }
 
 .skill-category h3 {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #10b981;
+  /* Keeping the color of the text the original color for contrast */
+  color: #0938f3;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -71,9 +75,10 @@
   justify-content: center;
 }
 
-.skill-tag {
-  background: rgba(16, 185, 129, 0.1);
-  color: #10b981;
+.skill-tag {                          
+  /* Keeping tag style as is for variety/color accent  for the [Areas of Interest]*/
+  background: rgba(3, 39, 245, 0.63);
+  color: #f0f0f0;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -84,7 +89,7 @@
 
 .skill-tag:hover {
   background: #10b981;
-  color: white;
+  color: rgb(240, 241, 245);
   transform: translateY(-2px);
 }
 
@@ -110,21 +115,25 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  background: rgba(16, 185, 129, 0.05);
+  /* Changed: Item background to White */
+  background: white;
+  /* Changed: Border color to a subtle grey for white background */
   border: none;
-  border-bottom: 2px solid rgba(16, 185, 129, 0.2);
+  border-bottom: 2px solid #e0e0e0;
   padding: 1.5rem 2rem;
   transition: all 0.3s ease;
   width: 100%;
   min-height: 80px;
   border-radius: 0;
-  box-shadow: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Added subtle shadow */
   margin-bottom: 0;
 }
 
 .teaching-item:hover {
-  background: rgba(16, 185, 129, 0.1);
-  border-bottom-color: #10b981;
+  /* Changed: Hover background to a subtle blue tint */
+  background: #f0f8ff;
+  /* Changed: Hover border to Blue */
+  border-bottom-color: #3b82f6;
   transform: translateX(10px);
   padding-left: 2.5rem;
 }
@@ -143,6 +152,7 @@
   width: 80px;
   height: 80px;
   border-radius: 10px;
+  /* Keeping original gradient for visual flair */
   background: linear-gradient(45deg, #3aa2d2, #0f766d);
   margin-right: 1.5rem;
   flex-shrink: 0;
@@ -180,10 +190,11 @@
 
 .teaching-content p {
   font-size: 1rem;
-  color: #c8cbd0;
+  /* Changed: Text color for white background */
+  color: #4b5563;
   line-height: 1.5;
   margin: 0;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 /* ===============================
@@ -194,7 +205,8 @@
 .teaching-item .btn-small {
   font-size: 0.9rem;
   padding: 0.7rem 1.5rem;
-  background-color: #10b981;
+  /* Changed: Button color to Blue */
+  background-color: #3b82f6;
   color: white;
   border: none;
   border-radius: 25px;
@@ -209,9 +221,11 @@
 }
 
 .teaching-item .btn-small:hover {
-  background-color: #0f766e;
+  /* Changed: Button hover color to Darker Blue */
+  background-color: #2563eb;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  /* Changed: Button shadow to Blue */
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 /* ===============================
@@ -279,10 +293,13 @@
 .github-section {
   margin-top: 3rem;
   padding: 2rem;
-  background: rgba(16, 185, 129, 0.05);
+  /* Changed: Background to White */
+  background: white;
   border-radius: 15px;
   text-align: center;
-  border: 2px solid rgba(16, 185, 129, 0.1);
+  /* Changed: Border color to a subtle grey */
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .github-section h3 {
@@ -292,12 +309,14 @@
 }
 
 .github-section p {
-  color: #c8cbd0;
+  /* Changed: Text color for white background */
+  color: #4b5563;
   margin-bottom: 1.5rem;
 }
 
 .github-section a {
-  color: #10b981;
+  /* Changed: Link color to Blue */
+  color: #3b82f6;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
@@ -305,7 +324,8 @@
 }
 
 .github-section a:hover {
-  color: #0f766e;
+  /* Changed: Link hover color to Darker Blue */
+  color: #2563eb;
 }
 
 .github-section i {
@@ -340,22 +360,25 @@
 }
 
 .video-card {
-  background: rgba(16, 185, 129, 0.05);
+  /* Changed: Background to White */
+  background: white;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   height: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid rgba(16, 185, 129, 0.1);
+  /* Changed: Border color to subtle grey */
+  border: 2px solid #e0e0e0;
 }
 
 .video-card:hover {
   transform: translateY(-5px);
-  border-color: #2f10b9;
-  box-shadow: 0 15px 35px rgba(26, 88, 231, 0.2);
-  background: rgba(16, 38, 185, 0.1);
+  /* Changed: Hover border and shadow to Blue */
+  border-color: #3b82f6;
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+  background: #f0f8ff; /* Subtle blue tint on hover */
 }
 
 .video-thumbnail {
@@ -385,7 +408,8 @@
 
 .video-card p {
   font-size: 0.95rem;
-  color: #c8cbd0;
+  /* Changed: Text color for white background */
+  color: #4b5563;
   line-height: 1.5;
   flex-grow: 1;
 }

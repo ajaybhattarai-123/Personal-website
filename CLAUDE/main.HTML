@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +22,8 @@
             --text-light: #ecf0f1;
             --bg-light: #f8f9fa;
             --bg-white: #ffffff;
-            --shadow: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         body {
@@ -159,8 +160,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .hero h1 {
@@ -726,6 +734,36 @@
             box-shadow: var(--shadow);
         }
 
+        /* Material Card Styles */
+        .material-card {
+            background: var(--bg-white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            padding: 2rem;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .material-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .material-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
         /* Footer */
         footer {
             background: var(--text-dark);
@@ -800,7 +838,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 0.7;
         }
 
@@ -810,6 +848,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -821,6 +860,7 @@
                 opacity: 0;
                 transform: translateY(-30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -888,6 +928,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav id="navbar">
@@ -898,6 +939,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#teaching">Teaching & Working</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#materials">Notes and Quiz</a></li>
                 <li><a href="#goals">Goals</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -913,7 +955,6 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="profile-image-container">
-                <!-- REPLACE 'HERO.png' WITH YOUR IMAGE FILE NAME -->
                 <img src="HERO.png" alt="Er. Ajay Bhattarai" class="profile-image">
             </div>
             <h1>Ajay Bhattarai</h1>
@@ -975,7 +1016,8 @@
             <div class="interests-content">
                 <h2>Areas of Interest</h2>
                 <p style="color: #01060e; margin-bottom: 2rem; font-size: 1.1rem;">
-                    A civil engineer with interdisciplinary knowledge spanning water, structural, and transportation systems.
+                    A civil engineer with interdisciplinary knowledge spanning water, structural, and transportation
+                    systems.
                 </p>
                 <div class="skill-tags">
                     <span class="skill-tag">Sustainable Infrastructure</span>
@@ -1003,10 +1045,13 @@
                         <i class="fas fa-play"></i>
                     </div>
                     <div class="teaching-content">
-                        <h3><a href="https://youtu.be/w3-26xpmvY0?si=SZWCk1QcHvjJNoRK" target="_blank">Revit Architecture Training</a></h3>
-                        <p>Trained over 60+ students in Revit Architecture in Institute of Engineering (IOE), Pulchowk College</p>
+                        <h3><a href="https://youtu.be/w3-26xpmvY0?si=SZWCk1QcHvjJNoRK" target="_blank">Revit
+                                Architecture Training</a></h3>
+                        <p>Trained over 60+ students in Revit Architecture in Institute of Engineering (IOE), Pulchowk
+                            College</p>
                     </div>
-                    <a href="https://youtu.be/w3-26xpmvY0?si=SZWCk1QcHvjJNoRK" target="_blank" class="btn-small">View</a>
+                    <a href="https://youtu.be/w3-26xpmvY0?si=SZWCk1QcHvjJNoRK" target="_blank"
+                        class="btn-small">View</a>
                 </div>
 
                 <div class="teaching-item">
@@ -1036,10 +1081,12 @@
                         <i class="fas fa-play"></i>
                     </div>
                     <div class="teaching-content">
-                        <h3><a href="https://youtu.be/QB_s55JPKig?si=Jnom6y-tQEQu4FOW" target="_blank">GyanHub Academy Sessions</a></h3>
+                        <h3><a href="https://youtu.be/QB_s55JPKig?si=Jnom6y-tQEQu4FOW" target="_blank">GyanHub Academy
+                                Sessions</a></h3>
                         <p>Professional training on AutoCAD, SW-DTM, and Google Earth Pro applications</p>
                     </div>
-                    <a href="https://youtu.be/QB_s55JPKig?si=Jnom6y-tQEQu4FOW" target="_blank" class="btn-small">View</a>
+                    <a href="https://youtu.be/QB_s55JPKig?si=Jnom6y-tQEQu4FOW" target="_blank"
+                        class="btn-small">View</a>
                 </div>
 
                 <div class="teaching-item">
@@ -1047,10 +1094,12 @@
                         <i class="fas fa-play"></i>
                     </div>
                     <div class="teaching-content">
-                        <h3><a href="https://drive.google.com/drive/folders/1rK06KrXelI8DC9ju_OEdCew1CDt2g7xw?usp=drive_link" target="_blank">Aakhyan Academy</a></h3>
+                        <h3><a href="https://drive.google.com/drive/folders/1rK06KrXelI8DC9ju_OEdCew1CDt2g7xw?usp=drive_link"
+                                target="_blank">Aakhyan Academy</a></h3>
                         <p>Teach Engineering Mechanics to first-year students</p>
                     </div>
-                    <a href="https://drive.google.com/drive/folders/1rK06KrXelI8DC9ju_OEdCew1CDt2g7xw?usp=drive_link" target="_blank" class="btn-small">View</a>
+                    <a href="https://drive.google.com/drive/folders/1rK06KrXelI8DC9ju_OEdCew1CDt2g7xw?usp=drive_link"
+                        target="_blank" class="btn-small">View</a>
                 </div>
             </div>
 
@@ -1102,10 +1151,37 @@
         </div>
     </section>
 
+    <!-- Materials & Models Section -->
+    <section id="materials" class="fade-in" style="background: var(--bg-light);">
+        <div class="container">
+            <h2>Notes and Quiz</h2>
+            <div class="about-grid">
+                <div class="material-card">
+                    <i class="fas fa-drafting-compass" style="color: var(--secondary-color);"></i>
+                    <h3>AutoCAD Notes</h3>
+                    <p>Comprehensive guide for Beginners of AutoCAD.</p>
+                    <a href="Autocad_Pdf.html" class="btn btn-primary" style="margin-top: 1rem;">View Notes</a>
+                </div>
+                <div class="material-card">
+                    <i class="fas fa-laptop-code" style="color: var(--secondary-color);"></i>
+                    <h3>Laptop Buying Guide</h3>
+                    <p>Comprehensive guide for engineers and developers to choose the perfect machine.</p>
+                    <a href="LAPTOP-GUIDE.HTML" class="btn btn-primary" style="margin-top: 1rem;">View Guide</a>
+                </div>
+                <div class="material-card">
+                    <i class="fas fa-brain" style="color: var(--accent-color);"></i>
+                    <h3>Engineering Quiz</h3>
+                    <p>Test your knowledge with our interactive engineering and tech quiz.</p>
+                    <a href="QUIZ.HTML" class="btn btn-primary" style="margin-top: 1rem;">Take Quiz</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Social Proof Section -->
     <section class="social-proof fade-in">
         <div class="container">
-            <h2 style="color: rgb(3, 3, 3); margin-bottom: 1rem;">Social Impact</h2>
+            <h2>Social Impact</h2>
             <p>Sharing engineering knowledge and inspiring the next generation of engineers</p>
             <div class="social-stats">
                 <div class="stat-item">
@@ -1136,7 +1212,10 @@
                         Percentage: 77.55/100 | IOE Rank: 173 (Top 1%)</p>
 
                     <h3 style="margin-top: 2rem;">Future Aspirations</h3>
-                    <p>Planning to pursue <strong>Master's studies in the United States</strong> in Civil Engineering. My goal is to expand my knowledge, do meaningful research, and learn new technologies like Machine Learning and Artificial Intelligence to solve real engineering problems. I also want to help grow the profession and inspire future engineers.</p>
+                    <p>Planning to pursue <strong>Master's studies in the United States</strong> in Civil Engineering.
+                        My goal is to expand my knowledge, do meaningful research, and learn new technologies like
+                        Machine Learning and Artificial Intelligence to solve real engineering problems. I also want to
+                        help grow the profession and inspire future engineers.</p>
                 </div>
                 <div class="achievements">
                     <h3>Research Interests</h3>
@@ -1182,7 +1261,8 @@
                                     <div class="contact-details">
                                         <div class="contact-label">Email</div>
                                         <div class="contact-value">
-                                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaybhattarai986@gmail.com" target="_blank">ajaybhattarai986@gmail.com</a>
+                                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaybhattarai986@gmail.com"
+                                                target="_blank">ajaybhattarai986@gmail.com</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1196,7 +1276,8 @@
                                     <div class="contact-details">
                                         <div class="contact-label">LinkedIn</div>
                                         <div class="contact-value">
-                                            <a href="https://www.linkedin.com/in/ajaybhattarai360" target="_blank">Connect with me</a>
+                                            <a href="https://www.linkedin.com/in/ajaybhattarai360"
+                                                target="_blank">Connect with me</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1210,7 +1291,8 @@
                                     <div class="contact-details">
                                         <div class="contact-label">YouTube</div>
                                         <div class="contact-value">
-                                            <a href="https://www.youtube.com/@ajaybhattarai360" target="_blank">Er. Ajay's Engineering Insights</a>
+                                            <a href="https://www.youtube.com/@ajaybhattarai360" target="_blank">Er.
+                                                Ajay's Engineering Insights</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1224,7 +1306,8 @@
                                     <div class="contact-details">
                                         <div class="contact-label">GitHub</div>
                                         <div class="contact-value">
-                                            <a href="https://github.com/ajaybhattarai-123" target="_blank">ajaybhattarai-123</a>
+                                            <a href="https://github.com/ajaybhattarai-123"
+                                                target="_blank">ajaybhattarai-123</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1246,13 +1329,16 @@
 
                     <div class="contact-cta">
                         <h3>Ready to Collaborate?</h3>
-                        <p>Whether you're interested in engineering consultations, training programs, or research collaborations, I'd love to hear from you.</p>
+                        <p>Whether you're interested in engineering consultations, training programs, or research
+                            collaborations, I'd love to hear from you.</p>
                         <div class="cta-buttons-contact">
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaybhattarai986@gmail.com" class="btn-contact btn-contact-primary" target="_blank">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaybhattarai986@gmail.com"
+                                class="btn-contact btn-contact-primary" target="_blank">
                                 <i class="fas fa-envelope"></i>
                                 Send Email
                             </a>
-                            <a href="https://www.linkedin.com/in/ajaybhattarai360" class="btn-contact btn-contact-secondary" target="_blank">
+                            <a href="https://www.linkedin.com/in/ajaybhattarai360"
+                                class="btn-contact btn-contact-secondary" target="_blank">
                                 <i class="fab fa-linkedin"></i>
                                 Connect on LinkedIn
                             </a>
@@ -1268,15 +1354,20 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>About</h3>
-                <p>Civil engineer and educator specializing in engineering software training, advancing research initiatives, and delivering technical solutions to engineering challenges.</p>
+                <p>Civil engineer and educator specializing in engineering software training, advancing research
+                    initiatives, and delivering technical solutions to engineering challenges.</p>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/ajaybhattarai360" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.youtube.com/@ajaybhattarai360" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="https://github.com/ajaybhattarai-123" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaybhattarai986@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/ajaybhattarai360" target="_blank" title="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/@ajaybhattarai360" target="_blank" title="YouTube"><i
+                            class="fab fa-youtube"></i></a>
+                    <a href="https://github.com/ajaybhattarai-123" target="_blank" title="GitHub"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajaybhattarai986@gmail.com" target="_blank"
+                        title="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
@@ -1288,7 +1379,7 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Areas of Expertise</h3>
                 <ul class="footer-links">
@@ -1299,16 +1390,17 @@
                     <li><a href="#">Engineering Research</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Get Updates</h3>
                 <p>Follow my YouTube channel for engineering tutorials and insights.</p>
-                <a href="https://www.youtube.com/@ajaybhattarai360" target="_blank" class="btn btn-primary" style="margin-top: 1rem; display: inline-flex;">
+                <a href="https://www.youtube.com/@ajaybhattarai360" target="_blank" class="btn btn-primary"
+                    style="margin-top: 1rem; display: inline-flex;">
                     <i class="fab fa-youtube"></i> Subscribe
                 </a>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; 2025 Er. Ajay Bhattarai. All rights reserved.</p>
         </div>
@@ -1325,10 +1417,10 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    
+
                     // Close mobile menu if open
                     navLinks.classList.remove('active');
-                    
+
                     // Update active nav link
                     document.querySelectorAll('.nav-links a').forEach(link => {
                         link.classList.remove('active');
@@ -1463,12 +1555,12 @@
             });
         });
 
-        scrollTopBtn.addEventListener('mouseenter', function() {
+        scrollTopBtn.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-5px)';
             this.style.background = '#e67e22';
         });
 
-        scrollTopBtn.addEventListener('mouseleave', function() {
+        scrollTopBtn.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0)';
             this.style.background = 'var(--accent-color)';
         });
@@ -1479,3 +1571,5 @@
         });
     </script>
 </body>
+
+</html>

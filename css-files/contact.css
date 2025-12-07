@@ -7,14 +7,19 @@
 .contact-section {
   padding: 4rem 0;
   margin: 2rem 0;
+  /* Setting a base for the contact section background */
+  background-color: white; /* Changed: Base background to white */
 }
 
 .contact-wrapper {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+  /* Changed: Base background to white or near-white, removing the colorful gradient */
+  background: white; 
+  /* Keeping a very subtle gradient for texture, mostly transparent */
+  /* background: linear-gradient(135deg, rgba(240, 240, 240, 0.5) 0%, rgba(255, 255, 255, 1) 100%); */
   border-radius: 25px;
   padding: 3rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Softened shadow for light background */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Changed: Adjusted border for light background */
   margin-top: 2rem;
   backdrop-filter: blur(10px);
 }
@@ -28,17 +33,19 @@
 .contact-header h2 {
   font-size: 2.8rem;
   font-weight: 700;
+  /* Green to Blue Gradient kept for text color */
   background: linear-gradient(45deg, #10b981, #3b82f6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 1rem;
-  text-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+  /* Text shadow color may need adjustment, keeping for effect */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
 
 .contact-subtitle {
   font-size: 1.2rem;
-  color: #94a3b8;
+  color: #64748b; /* Darkened for better contrast on white */
   font-weight: 400;
   line-height: 1.6;
 }
@@ -85,8 +92,9 @@
 
 /* Individual Contact Cards */
 .contact-card {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  /* Changed: Card background for white theme */
+  background: #f8fafc; 
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Adjusted border */
   border-radius: 15px;
   padding: 1.5rem;
   transition: all 0.3s ease;
@@ -110,9 +118,10 @@
 
 .contact-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2);
-  border-color: #10b981;
-  background: rgba(16, 185, 129, 0.08);
+  /* Adjusted shadow for light background */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+  border-color: #3b82f6; /* Changed hover border to blue */
+  background: #ffffff; /* Changed: Hover background to white */
 }
 
 .contact-card:hover:before {
@@ -130,7 +139,8 @@
 .contact-icon {
   width: 50px;
   height: 50px;
-  background: linear-gradient(45deg, #10b981, #059669);
+  /* Keeping green gradient for icon fill */
+  background: linear-gradient(45deg, #10b981, #059669); 
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -196,7 +206,7 @@
 
 .contact-value {
   font-size: 1.1rem;
-  color: #e2e8f0;
+  color: #1e293b; /* Darkened for white background */
   font-weight: 500;
   word-break: break-word;
 }
@@ -220,7 +230,7 @@
 }
 
 .contact-value a:hover {
-  color: #10b981;
+  color: #3b82f6; /* Changed hover link color to blue */
 }
 
 .contact-value a:hover:after {
@@ -229,11 +239,11 @@
 
 /* Call to Action Section */
 .contact-cta {
-  background: rgba(16, 185, 129, 0.08);
+  background: #eff6ff; /* Changed: Light blue background for CTA on white theme */
   border-radius: 20px;
   padding: 2.5rem;
   text-align: center;
-  border: 1px solid rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.2); /* Adjusted border for blue theme */
   position: relative;
   overflow: hidden;
 }
@@ -245,12 +255,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 70%); /* Adjusted gradient to blue */
   pointer-events: none;
 }
 
 .contact-cta h3 {
-  color: #10b981;
+  color: #3b82f6; /* Changed heading color to blue */
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -259,7 +269,7 @@
 }
 
 .contact-cta p {
-  color: #94a3b8;
+  color: #64748b;
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
@@ -322,31 +332,36 @@
   z-index: 2;
 }
 
-/* Primary Button */
+/* Primary Button - Changed to Blue */
 .btn-contact-primary {
-  background: linear-gradient(45deg, #10b981, #059669);
+  /* Changed: Blue gradient */
+  background: linear-gradient(45deg, #3b82f6, #2563eb); 
   color: white;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+  /* Adjusted shadow to blue */
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3); 
 }
 
 .btn-contact-primary:hover {
-  background: linear-gradient(45deg, #059669, #047857);
+  /* Changed: Darker blue gradient for hover */
+  background: linear-gradient(45deg, #2563eb, #1d4ed8); 
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+  /* Adjusted hover shadow to blue */
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4); 
 }
 
-/* Secondary Button */
+/* Secondary Button - Changed to Blue focus */
 .btn-contact-secondary {
   background: transparent;
-  color: #10b981;
-  border: 2px solid #10b981;
+  color: #3b82f6; /* Changed color to blue */
+  border: 2px solid #3b82f6; /* Changed border to blue */
 }
 
 .btn-contact-secondary:hover {
-  background: #10b981;
+  background: #3b82f6; /* Changed hover background to blue */
   color: white;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+  /* Adjusted shadow to blue */
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3); 
 }
 
 /* ===============================
@@ -523,17 +538,17 @@
 ================================ */
 
 .contact-card:focus-within {
-  outline: 2px solid #10b981;
+  outline: 2px solid #3b82f6; /* Changed focus outline to blue */
   outline-offset: 2px;
 }
 
 .btn-contact:focus {
-  outline: 2px solid #10b981;
+  outline: 2px solid #3b82f6; /* Changed focus outline to blue */
   outline-offset: 2px;
 }
 
 .contact-value a:focus {
-  outline: 2px solid #10b981;
+  outline: 2px solid #3b82f6; /* Changed focus outline to blue */
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -544,6 +559,7 @@
 ================================ */
 
 @media (prefers-color-scheme: dark) {
+  /* Reverting to original dark mode background */
   .contact-wrapper {
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
     border-color: rgba(16, 185, 129, 0.3);
@@ -580,18 +596,21 @@
   }
 
   .contact-icon {
-    background: #10b981 !important;
+    /* Keeping green for icon fill */
+    background: #10b981 !important; 
     print-color-adjust: exact;
   }
 
   .btn-contact {
-    background: #10b981 !important;
+    /* Changed: Blue for primary button in print */
+    background: #3b82f6 !important; 
     color: white !important;
     print-color-adjust: exact;
   }
 
   .contact-header h2 {
-    color: #10b981 !important;
+    /* Keeping green for text gradient */
+    color: #10b981 !important; 
     print-color-adjust: exact;
   }
 }

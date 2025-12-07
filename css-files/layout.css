@@ -1,0 +1,129 @@
+/* Header Styles */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* Changed: Background to White, kept subtle transparency/blur for effect */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    /* Changed: Border color for white background */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* Changed: Logo color to Black */
+    color: #000000;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    /* Changed: Nav link text color to Black */
+    color: #000000;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.nav-links a:hover {
+    /* Changed: Hover text color to Blue */
+    color: #3b82f6;
+    /* Changed: Hover background to subtle blue */
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    /* Changed: Active/Hover line color to Blue */
+    background: #3b82f6;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 80%;
+}
+
+/* Main Content Styles */
+.main-content {
+    margin-top: 80px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section {
+    margin: 4rem 0;
+    /* Changed: Section background to White */
+    background: white;
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    /* Changed: Box shadow for white background */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* Removed backdrop-filter as it's not needed on a solid white background */
+    backdrop-filter: none;
+    /* Changed: Border color for white background */
+    border: 1px solid #e0e0e0;
+    /* Ensure any text content within the section is black (or dark) */
+    color: #000000;
+}
+
+/* *** IMPORTANT NOTE ON BUTTONS ***
+  The original CSS provided does not contain a general .button or .btn class to directly modify all buttons. 
+  If there were, the styles would look like this:
+
+  .button, .btn {
+      color: white; 
+      background-color: #3b82f6; 
+  }
+  
+  Since the section styles have been changed to white background and black text, 
+  any elements inside the section will inherit black text unless specified otherwise.
+  
+  For demonstration, let's assume a common button class:
+*/
+
+/* Example Button Styles (If a button class existed in the unprovided part of the CSS) */
+/*
+.btn, .button {
+    background-color: #3b82f6; 
+    color: white; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover, .button:hover {
+    background-color: #2563eb; 
+}
+*/
