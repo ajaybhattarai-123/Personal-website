@@ -6,927 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Er. Ajay Bhattarai - Civil Engineer | Educator | Researcher</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #1a4d7a;
-            --secondary-color: #2c6ba8;
-            --accent-color: #f39c12;
-            --pink-accent: #d511be;
-            --text-dark: #2c3e50;
-            --text-light: #ecf0f1;
-            --bg-light: #f8f9fa;
-            --bg-white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--bg-white);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            padding: 0.5rem 0;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--secondary-color);
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        /* Hero Section with Profile Image */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--text-light);
-            padding: 150px 2rem 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
-            background-size: cover;
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .profile-image-container {
-            text-align: center;
-            margin-bottom: 2rem;
-            animation: fadeInDown 1s ease;
-        }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid var(--accent-color);
-            box-shadow: var(--shadow-lg);
-            object-fit: cover;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s backwards;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.85;
-            animation: fadeInUp 1s ease 0.4s backwards;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.6s backwards;
-        }
-
-        .btn {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--accent-color);
-            color: var(--text-dark);
-        }
-
-        .btn-primary:hover {
-            background: #e67e22;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-light);
-            border: 2px solid var(--text-light);
-        }
-
-        .btn-secondary:hover {
-            background: var(--text-light);
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 80px 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--accent-color);
-            border-radius: 2px;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .about-content p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-
-        .achievements {
-            margin-top: 2rem;
-        }
-
-        .achievements h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        .achievement-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: var(--bg-light);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .achievement-item:hover {
-            transform: translateX(10px);
-            box-shadow: var(--shadow);
-        }
-
-        .achievement-item i {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            min-width: 30px;
-        }
-
-        /* Areas of Interest */
-        .interests-section {
-            background: var(--bg-light);
-        }
-
-        .interests-content {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .skill-tag {
-            background: var(--secondary-color);
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-
-        .skill-tag:hover {
-            background: var(--accent-color);
-            color: var(--text-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        /* Teaching & Working Section */
-        .teaching-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .teaching-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            background: var(--bg-white);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .teaching-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .teaching-thumbnail {
-            width: 80px;
-            height: 80px;
-            background: var(--secondary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            font-size: 2rem;
-            flex-shrink: 0;
-        }
-
-        .teaching-content {
-            flex: 1;
-        }
-
-        .teaching-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .teaching-content h3 a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .teaching-content h3 a:hover {
-            color: var(--accent-color);
-        }
-
-        .teaching-content p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .btn-small {
-            padding: 0.5rem 1.5rem;
-            background: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .btn-small:hover {
-            background: #e67e22;
-            transform: translateY(-2px);
-        }
-
-        .github-section {
-            margin-top: 3rem;
-            text-align: center;
-            padding: 2rem;
-            background: var(--text-dark);
-            color: white;
-            border-radius: 10px;
-        }
-
-        .github-section h3 {
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .github-section p {
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-
-        .github-section a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-            font-size: 1.2rem;
-            text-decoration: none;
-            padding: 0.8rem 2rem;
-            background: var(--secondary-color);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .github-section a:hover {
-            background: var(--accent-color);
-            color: var(--text-dark);
-            transform: translateY(-3px);
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .skill-category h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .skill-category h3 i {
-            color: var(--accent-color);
-        }
-
-        /* Social Proof Section */
-        .social-proof {
-            background: var(--bg-light);
-            text-align: center;
-        }
-
-        .social-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat-item {
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-
-        /* Goals Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .about-grid h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .about-grid p {
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            background: var(--bg-light);
-        }
-
-        .contact-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .contact-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .contact-subtitle {
-            color: #666;
-            font-size: 1.2rem;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info-section h3 {
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-items {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-card {
-            background: var(--bg-white);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .contact-card-content {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1.5rem;
-        }
-
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--secondary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .contact-details {
-            flex: 1;
-        }
-
-        .contact-label {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-value {
-            color: #666;
-        }
-
-        .contact-value a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-value a:hover {
-            color: var(--accent-color);
-        }
-
-        .contact-cta {
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .contact-cta h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .contact-cta p {
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            color: #666;
-        }
-
-        .cta-buttons-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .btn-contact {
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn-contact-primary {
-            background: var(--accent-color);
-            color: white;
-        }
-
-        .btn-contact-primary:hover {
-            background: #e67e22;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-contact-secondary {
-            background: var(--secondary-color);
-            color: white;
-        }
-
-        .btn-contact-secondary:hover {
-            background: var(--primary-color);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        /* Material Card Styles */
-        .material-card {
-            background: var(--bg-white);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            padding: 2rem;
-            text-align: center;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .material-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .material-card i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .material-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: var(--text-light);
-            padding: 3rem 2rem 1rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-
-        .footer-section p {
-            opacity: 0.8;
-            line-height: 1.8;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: var(--secondary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--accent-color);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                flex-direction: column;
-                background: var(--bg-white);
-                width: 100%;
-                padding: 2rem;
-                box-shadow: var(--shadow);
-                transition: left 0.3s ease;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .tagline {
-                font-size: 1.2rem;
-            }
-
-            .about-grid,
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .teaching-item {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css-files/style.css">
 </head>
 
 <body>
@@ -938,9 +18,11 @@
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#teaching">Teaching & Working</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#materials">Notes and Quiz</a></li>
                 <li><a href="#goals">Goals</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle">
@@ -1045,9 +127,25 @@
                         <i class="fas fa-play"></i>
                     </div>
                     <div class="teaching-content">
-                        <h3><a href="https://youtu.be/w3-26xpmvY0?si=SZWCk1QcHvjJNoRK" target="_blank">Revit
-                                Architecture Training</a></h3>
-                        <p>Trained over 60+ students in Revit Architecture in Institute of Engineering (IOE), Pulchowk
+                        <h3><a href="#" target="_blank">Institute of
+                                Engineering, Pulchowk Campus</a></h3>
+                        <p>Trained over 200+ students in <b>AutoCAD</b> from basic to professional level at Institute of
+                            Engineering (IOE), Pulchowk
+                            College</p>
+                    </div>
+                    <a href="https://youtu.be/__g8gMUIZyg?si=iWxphbAP9nQyCMPg" target="_blank"
+                        class="btn-small">View</a>
+                </div>
+
+                <div class="teaching-item">
+                    <div class="teaching-thumbnail">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="teaching-content">
+                        <h3><a href="#" target="_blank">Institute of
+                                Engineering, Pulchowk Campus</a></h3>
+                        <p>Trained over 60+ students in <b>Revit Architecture</b> in Institute of Engineering (IOE),
+                            Pulchowk
                             College</p>
                     </div>
                     <a href="https://youtu.be/w3-26xpmvY0?si=SZWCk1QcHvjJNoRK" target="_blank"
@@ -1062,7 +160,7 @@
                         <h3><a href="#" target="_blank">Universal Engineering & Science College</a></h3>
                         <p>Trained over 100+ students in AutoCAD and SW-DTM from basic to advance</p>
                     </div>
-                    <a href="#" class="btn-small">View</a>
+                    <a href="#" target="_blank" class="btn-small">View</a>
                 </div>
 
                 <div class="teaching-item">
@@ -1073,7 +171,8 @@
                         <h3><a href="#" target="_blank">Sikaune EduTech</a></h3>
                         <p>Trained over 20+ students in AutoCAD from beginner to intermediate</p>
                     </div>
-                    <a href="#" class="btn-small">View</a>
+                    <a href="#" target="_blank" class="btn-small">View</a>
+
                 </div>
 
                 <div class="teaching-item">
@@ -1094,9 +193,9 @@
                         <i class="fas fa-play"></i>
                     </div>
                     <div class="teaching-content">
-                        <h3><a href="https://drive.google.com/drive/folders/1rK06KrXelI8DC9ju_OEdCew1CDt2g7xw?usp=drive_link"
-                                target="_blank">Aakhyan Academy</a></h3>
-                        <p>Teach Engineering Mechanics to first-year students</p>
+                        <h3><a href="#" target="_blank">Aakhyan Academy</a></h3>
+                        <p>Teach Engineering Mechanics and Engineering Drawing to the first-year Engineering students
+                        </p>
                     </div>
                     <a href="https://drive.google.com/drive/folders/1rK06KrXelI8DC9ju_OEdCew1CDt2g7xw?usp=drive_link"
                         target="_blank" class="btn-small">View</a>
@@ -1109,6 +208,85 @@
                 <a href="https://github.com/ajaybhattarai-123" target="_blank">
                     <i class="fab fa-github"></i> GitHub: ajaybhattarai-123
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="fade-in" style="background: var(--bg-light);">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-list">
+                <!-- Project 1: YOLOv8 Traffic -->
+                <div class="project-item">
+                    <div class="project-content">
+                        <h3>Real-Time Bidirectional Traffic Analysis</h3>
+                        <div class="project-meta">
+                            <strong>Methods:</strong> YOLOv8 (yolov8l.pt), ByteTrack, Computer Vision
+                        </div>
+                        <p class="project-problem">
+                            <strong>Problem:</strong> Addressing the need for automated, error-free monitoring in
+                            traffic management and planning to replace manual counting methods.
+                        </p>
+                        <ul class="project-results">
+                            <li>Achieved high accuracy in multi-class vehicle classification (Car, Bus, Motorbike,
+                                Truck).</li>
+                            <li>Enabled robust real-time tracking across frames using ByteTrack.</li>
+                            <li>Automated data export to Excel (.xlsx) for seamless downstream analysis.</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-badge">PyTorch</span>
+                            <span class="tech-badge">YOLOv8</span>
+                            <span class="tech-badge">ByteTrack</span>
+                            <span class="tech-badge">OpenCV</span>
+                            <span class="tech-badge">Pandas</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ajaybhattarai-123/Automatic_Vehicle_Classification_-_Counting"
+                                class="btn btn-primary"><i class="fab fa-github"></i> View Project on GitHub</a>
+                            <a href="pdfs/Documentation_YOLO.pdf" target="_blank" class="btn btn-secondary"
+                                style="color: var(--primary-color); border-color: var(--primary-color);"><i
+                                    class="fas fa-file-pdf"></i> Read Documentation</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: CNN Crack Detection -->
+                <div class="project-item">
+                    <div class="project-content">
+                        <h3>Automated Concrete Crack Detection System</h3>
+                        <div class="project-meta">
+                            <strong>Methods:</strong> Custom CNN, PyTorch, Deep Learning
+                        </div>
+                        <p class="project-problem">
+                            <strong>Problem:</strong> Provides a fast, non-destructive, and objective method to classify
+                            surface health for maintenance prioritization.
+                        </p>
+                        <p>
+                            Engineered a custom Convolutional Neural Network (CNN) using PyTorch, incorporating Dropout
+                            and Batch Normalization layers to ensure robust performance on structural surface images.
+                        </p>
+                        <ul class="project-results">
+                            <li>Achieved >98% accuracy on the test set for binary classification.</li>
+                            <li>Optimized for concrete and pavement surface images.</li>
+                            <li>Significantly reduced inspection time compared to manual methods.</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-badge">PyTorch</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">NumPy</span>
+                            <span class="tech-badge">Matplotlib</span>
+                            <span class="tech-badge">CNN</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/ajaybhattarai-123/CONCRETE_CRACK_DETECTION"
+                                class="btn btn-primary"><i class="fab fa-github"></i> View Project on GitHub</a>
+                            <a href="pdfs/Documentation_CNN.pdf" target="_blank" class="btn btn-secondary"
+                                style="color: var(--primary-color); border-color: var(--primary-color);"><i
+                                    class="fas fa-file-pdf"></i> Read Documentation</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1212,10 +390,7 @@
                         Percentage: 77.55/100 | IOE Rank: 173 (Top 1%)</p>
 
                     <h3 style="margin-top: 2rem;">Future Aspirations</h3>
-                    <p>Planning to pursue <strong>Master's studies in the United States</strong> in Civil Engineering.
-                        My goal is to expand my knowledge, do meaningful research, and learn new technologies like
-                        Machine Learning and Artificial Intelligence to solve real engineering problems. I also want to
-                        help grow the profession and inspire future engineers.</p>
+                    <p>Planning to pursue a Master’s in Civil Engineering in the United States. My goal is to deepen my knowledge, conduct meaningful research, and become an expert in Machine Learning (ML) and Artificial Intelligence (AI), integrating these technologies with civil engineering to solve real-world engineering problems. I also aspire to contribute to the growth of the profession and inspire future engineers.</p>
                 </div>
                 <div class="achievements">
                     <h3>Research Interests</h3>
@@ -1229,11 +404,228 @@
                     </div>
                     <div class="achievement-item">
                         <i class="fas fa-leaf"></i>
-                        <span>Digital twin technology</span>
+                        <span>Automation</span>
                     </div>
                     <div class="achievement-item">
                         <i class="fas fa-cogs"></i>
                         <span>Resilient Infrastructure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="fade-in">
+        <div class="container">
+            <h2>Gallery</h2>
+
+            <!-- Gallery Tabs -->
+            <div class="gallery-tabs">
+                <button class="gallery-tab active" data-target="autocad">Software Training</button>
+                <button class="gallery-tab" data-target="survey">Engineering Survey & Field Visit</button>
+                <button class="gallery-tab" data-target="leadership">Program Organized</button>
+                <button class="gallery-tab" data-target="others">Others</button>
+            </div>
+
+            <!-- 1. AutoCAD Training Pane -->
+            <div id="autocad" class="gallery-pane active fade-in">
+                <div class="gallery-band">
+                    <!-- <h3>AutoCAD Training</h3> Removed as requested -->
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="GALLERY/AT-P-01.png" alt="AutoCAD Training 01" loading="lazy">
+                            <div class="gallery-caption">Providing AutoCAD Training at F-Hall, Department of Civil
+                                Engineering, Pulchowk Campus</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/AT-P-02.png" alt="AutoCAD Training 02" loading="lazy">
+                            <div class="gallery-caption">Providing AutoCAD Training at F-Hall, Department of Civil
+                                Engineering, Pulchowk Campus</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/AT-P-03.png" alt="AutoCAD Training 03" loading="lazy">
+                            <div class="gallery-caption">Providing AutoCAD Training at F-Hall, Department of Civil
+                                Engineering, Pulchowk Campus</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/AT-P-04.png" alt="AutoCAD Training 04" loading="lazy">
+                            <div class="gallery-caption">Completion of AutoCAD Training organized by PDSC and FSU Pulchowk</div>
+                        </div>
+                    
+                        <div class="gallery-item">
+                            <img src="GALLERY/AT-P-06.png" alt="AutoCAD Training 06" loading="lazy">
+                            <div class="gallery-caption">Organizing Inter-College AutoCAD Competition</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/AT-P-07.png" alt="AutoCAD Training 07" loading="lazy">
+                            <div class="gallery-caption">Providiing Sw-dtm and AutoCAD Training at Universal Engineering and Science College, Group-2</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/AT-P-08.png" alt="AutoCAD Training 08" loading="lazy">
+                            <div class="gallery-caption">Providiing Sw-dtm and AutoCAD Training at Universal Engineering and Science College, Group-2</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/AT-P-09.png" alt="AutoCAD Training 09" loading="lazy">
+                            <div class="gallery-caption">Providiing Sw-dtm and AutoCAD Training at Universal Engineering and Science College, Group-1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Engineering Survey and Project Pane -->
+            <div id="survey" class="gallery-pane fade-in">
+                <div class="gallery-band">
+                    <!-- <h3>Engineering Survey and Project</h3> Removed -->
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="GALLERY/SUR-01.png" alt="Survey Project 01" loading="lazy">
+                            <div class="gallery-caption">Final Year Project Team, Engineering Surveysite visit, Location: Pilot Baba Ashram, Bhaktapur </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SUR-02.png" alt="Survey Project 02" loading="lazy">
+                            <div class="gallery-caption">Road Section Khalchowk to Bhaisepati</div>
+                        </div>
+                         <div class="gallery-item">
+                            <img src="GALLERY/SUR-04.png" alt="Survey Project 04" loading="lazy">
+                            <div class="gallery-caption">Hair pin band, Road Section Khalchowk to Bhaisepati</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="GALLERY/SUR-06.png" alt="Survey Project 06" loading="lazy">
+                            <div class="gallery-caption">Engineering Survery Project, Khalchhowk to Bhaisepati</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SUR-07.png" alt="Survey Project 07" loading="lazy">
+                            <div class="gallery-caption">Engineering Survery Project, Khalchhowk to Bhaisepati</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SUR-08.png" alt="Survey Project 08" loading="lazy">
+                            <div class="gallery-caption">Topographical Survery, Location: Kritipur, Lalitpur</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SUR-09.png" alt="Survey Project 09" loading="lazy">
+                            <div class="gallery-caption">Topographical Survery, Location: Kritipur, Lalitpur</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SUR-03.png" alt="Survey Project 03" loading="lazy">
+                            <div class="gallery-caption">Crack in Masonry Building, Location: Gundu, Bhaktapur</div>
+                        </div>
+                       
+                        <div class="gallery-item">
+                            <img src="GALLERY/SUR-05.png" alt="Survey Project 05" loading="lazy">
+                            <div class="gallery-caption">Crack in Masonry Building, Location: Gundu, Bhaktapur</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Leadership Images Pane -->
+            <div id="leadership" class="gallery-pane fade-in">
+                <div class="gallery-band">
+                    <!-- <h3>Leadership Images</h3> Removed -->
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="GALLERY/SOE-01.png" alt="Leadership 01" loading="lazy">
+                            <div class="gallery-caption">Elected as President of the Society of Eastern Engineering Students (SOEES), alongside the Executive Committee</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SOE-02.png" alt="Leadership 02" loading="lazy">
+                            <div class="gallery-caption">Anchoring and hosting a SOEES-organized program, demonstrating public speaking and coordination skills (Left: Samana Bhattarai)</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SOE-03.png" alt="Leadership 03" loading="lazy">
+                            <div class="gallery-caption">Conclusion of the Art Competition alongside Committee and Society Members (Center: Me)</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SOE-04.png" alt="Leadership 04" loading="lazy">
+                            <div class="gallery-caption">Online Art Competition Organized by the Society of Eastern Engineering Students (SOEES)</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SOE-05.png" alt="Leadership 05" loading="lazy">
+                            <div class="gallery-caption">Online Art Competition Organized by the Society of Eastern Engineering Students (SOEES),  Prize Distribution ceremony</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SOE-06.png" alt="Leadership 06" loading="lazy">
+                            <div class="gallery-caption">Invited as a Guest in a SOEES Program, alongside Associate Professor Roshan Karki (Right)</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SOE-07.png" alt="Leadership 07" loading="lazy">
+                            <div class="gallery-caption">Coordinated the Grand Saraswati Puja Celebration (Left: Najir Hussain)</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/SOE-08.png" alt="Leadership 08" loading="lazy">
+                            <div class="gallery-caption">Honored with the Program Coordinator Award by Associate Professor Akhilesh Kumar Karn</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Others Pane -->
+            <div id="others" class="gallery-pane fade-in">
+                <div class="gallery-band">
+                    <!-- <h3>Others</h3> Removed -->
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="GALLERY/OT-01.png" alt="Other 01" loading="lazy">
+                            <div class="gallery-caption">Delivered a Presentation on Nepal’s Energy Scenario at the Load Dispatch Center (LDC), Syuchatar</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="GALLERY/OT-03.png" alt="Other 03" loading="lazy">
+                            <div class="gallery-caption">Syllabus Development for AutoCAD and Civil 3D at Sikaune Edu Tech, Pulchowk, Lalitpur</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/OT-05.png" alt="Other 05" loading="lazy">
+                            <div class="gallery-caption">Field Visit to Tanahun Hydropower with Associate Professor Santosh Kumar Shrestha (Left)</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/OT-06.png" alt="Other 06" loading="lazy">
+                            <div class="gallery-caption">Receiving the AutoCAD Competition Winner Award from Lalitpur Metro Mayor Chiri Babu Maharjan</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/RET-01.png" alt="RET 01" loading="lazy">
+                            <div class="gallery-caption">Conducting a Retrofitting Workshop for Locals and Elected Leaders, Changunarayan-4, Kathmandu</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/RET-02.png" alt="RET 02" loading="lazy">
+                            <div class="gallery-caption">Delivering Training on Retrofitting RC Framed and Load-Bearing Structures to Community Members and Local Leaders in Changunarayan-4, Kathmandu</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/OT-11.png" alt="Other 11" loading="lazy">
+                            <div class="gallery-caption">Field Visit to Tanahun Hydropower, Tanahun</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/OT-12.png" alt="Other 12" loading="lazy">
+                            <div class="gallery-caption">Irrigation Field Visit at Bagmati River, Sarlahi–Rauthat</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img src="GALLERY/RET-03.png" alt="RET 03" loading="lazy">
+                            <div class="gallery-caption">Using Profoscope to Locate Reinforcing Steel and Measure Concrete Cover, Kirtipur</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/RET-05.png" alt="RET 05" loading="lazy">
+                            <div class="gallery-caption">Conducting Concrete Strength Assessment with a Rebound Hammer, Kirtipur</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/RET-04.png" alt="RET 04" loading="lazy">
+                            <div class="gallery-caption">Learning About Ultrasonic Pulse Velocity (UPV) Testing Techniques from a Technical Expert</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/OT-02.png" alt="Other 02" loading="lazy">
+                            <div class="gallery-caption">Had the Opportunity to Attend TEDx, Organized by IOE Pulchowk</div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="GALLERY/OT-07.png" alt="Other 07" loading="lazy">
+                            <div class="gallery-caption">Undergraduate Civil Engineering Student Group — Batch 2076BCEAB</div>
+                        </div>
+                
+                        <div class="gallery-item">
+                            <img src="GALLERY/OT-10.png" alt="Other 10" loading="lazy">
+                            <div class="gallery-caption">CESS Exhibition 2080 — Organizing Various Programs with Friends</div>
+                        </div>
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -1569,9 +961,38 @@
         window.addEventListener('load', () => {
             document.body.style.opacity = '1';
         });
+
+        // Gallery Tabs Logic
+        const tabs = document.querySelectorAll('.gallery-tab');
+        const panes = document.querySelectorAll('.gallery-pane');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                // Hide all panes
+                panes.forEach(pane => {
+                    pane.classList.remove('active');
+                    pane.style.display = 'none'; // Ensure display is toggled
+                });
+
+                // Show target pane
+                const targetId = tab.getAttribute('data-target');
+                const targetPane = document.getElementById(targetId);
+                if (targetPane) {
+                    targetPane.style.display = 'block'; // Ensure display is toggled
+                    // Small delay to allow display to apply before adding active class for animation
+                    setTimeout(() => {
+                        targetPane.classList.add('active');
+                    }, 10);
+                }
+            });
+        });
     </script>
 </body>
 
-
 </html>
-
