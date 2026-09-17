@@ -15,7 +15,7 @@ const resources = [
     title: 'Bimba Raag Book',
     description: 'A personal creative project typeset in LaTeX. Featuring custom graphics and dedicated to my beloved Father and Mother.',
     icon: <FiBook />,
-    link: '/pdfs/FINAL_CORRECTED.pdf',
+    link: '/pdfs/01_Book_Raag.pdf',
     linkText: 'View PDF',
   },
 ]
