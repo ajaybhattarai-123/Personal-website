@@ -99,7 +99,7 @@ export default function Hero() {
               <FiArrowRight />
             </a>
             <a
-              href="/pdfs/Ajay_Bhattarai_CV.pdf"
+              href="./pdfs/Ajay_Bhattarai_CV.pdf"
               className={`btn btn-outline ${styles.ctaBtn}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -143,7 +143,7 @@ export default function Hero() {
             <div className={styles.imageGlow} aria-hidden="true" />
             <div className={styles.imageRing} aria-hidden="true" />
             <img
-              src="/HERO.png"
+              src="./HERO.png"
               alt="Ajay Bhattarai — Civil Engineer & Water Resources Researcher"
               className={styles.profileImg}
             />

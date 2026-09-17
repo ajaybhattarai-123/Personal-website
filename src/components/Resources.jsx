@@ -8,14 +8,14 @@ const resources = [
     title: 'AutoCAD Notes',
     description: 'Comprehensive guide for Beginners of AutoCAD.',
     icon: <FiFileText />,
-    link: '/Autocad_Pdf.html',
+    link: './Autocad_Pdf.html',
     linkText: 'View Notes',
   },
   {
     title: 'Bimba Raag Book',
     description: 'A personal creative project typeset in LaTeX. Featuring custom graphics and dedicated to my beloved Father and Mother.',
     icon: <FiBook />,
-    link: '/pdfs/01_Book_Raag.pdf',
+    link: './pdfs/01_Book_Raag.pdf',
     linkText: 'View PDF',
   },
 ]
