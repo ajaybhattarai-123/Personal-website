@@ -1,0 +1,45 @@
+.achievements {
+  padding: var(--section-pad);
+  background: var(--primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.achievementItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.achievementItem:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 15px rgba(0, 180, 216, 0.1);
+}
+
+.bullet {
+  color: var(--accent);
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.achievementItem p {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

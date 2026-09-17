@@ -1,0 +1,132 @@
+.experience {
+  padding: var(--section-pad);
+  background: var(--card-bg);
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 11px;
+  height: 100%;
+  width: 2px;
+  background: var(--border);
+}
+
+.timelineItem {
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 3rem;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineDot {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--primary);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  z-index: 1;
+  transition: var(--transition);
+}
+
+.timelineItem:hover .timelineDot {
+  background: var(--accent);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.timelineContent {
+  background: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: var(--transition);
+}
+
+.timelineContent:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-accent);
+}
+
+.timelineHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.role {
+  color: var(--text-heading);
+  font-size: 1.25rem;
+}
+
+.date {
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  color: var(--green);
+  white-space: nowrap;
+}
+
+.company {
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.location {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.description li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.description li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 1.1rem;
+  line-height: 1;
+  top: 2px;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .timelineHeader {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}

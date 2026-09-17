@@ -1,0 +1,135 @@
+.about {
+  padding: var(--section-pad);
+  background: var(--primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.bioSide {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.bioSide p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
+.bioSide strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.interestTitle {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--text-heading);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.infoSide {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.highlightCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.highlightCard {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: var(--transition);
+}
+
+.highlightCard:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  background: rgba(13, 33, 55, 0.8);
+}
+
+.highlightLabel {
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.highlightValue {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+.highlightSub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.futureGoals {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.futureGoals::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--green);
+}
+
+.futureGoals h3 {
+  margin-bottom: 1rem;
+  color: var(--text-heading);
+}
+
+.futureGoals p {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.goalTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .highlightCards {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,110 @@
+.contact {
+  padding: var(--section-pad);
+  background: var(--primary);
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.infoCards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  transform: translateX(10px);
+  box-shadow: var(--shadow-sm);
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-glow);
+  color: var(--accent);
+  border-radius: 10px;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.label {
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.value {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+a.value:hover {
+  color: var(--accent);
+}
+
+.ctaBox {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 3rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.ctaBox h3 {
+  color: var(--text-heading);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.ctaBox p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+}
